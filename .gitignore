@@ -159,3 +159,18 @@ web-build/
 
 # macOS
 .DS_Store
+
+Marvel/node_modules/
+Marvel/.expo/
+Marvel/dist/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+Marvel/web-build/
+
+# macOS
+.DS_Store
