@@ -1,24 +1,41 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-import React from 'react';
-import {Image} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Image, Keyboard} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import ComicsScreen from '../screens/Comics';
 import HomeScreen from '../screens/Home';
 import SeriesScreen from '../screens/Series';
+import NavigationAuth from './NavigationAuth';
 const Tab = createBottomTabNavigator();
 const Navigation = () => {
+  const [showTabNavigator, setShowTabNavigator] = useState(true);
+  useEffect(() => {
+    //Listener to open the keyboard
+    const showSubcription = Keyboard.addListener('keyboardDidShow', e => {
+      setShowTabNavigator(false);
+    });
+
+    const hideSubcription = Keyboard.addListener('keyboardDidHide', e => {
+      setShowTabNavigator(true);
+    });
+    return () => {
+      showSubcription.remove();
+      hideSubcription.remove();
+    };
+  }, []);
+
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Home"
+        initialRouteName="Auth"
         screenOptions={({route}) => ({
           tabBarActiveTintColor: '#E63838',
+          tabBarHideOnKeyboard: true,
         })}>
         <Tab.Screen
-          name="Login"
-          component={ComicsScreen}
+          name="Auth"
+          component={NavigationAuth}
           options={{
             tabBarLabel: '',
             tabBarIcon: ({focused}) => {
@@ -38,6 +55,8 @@ const Navigation = () => {
                 />
               );
             },
+
+            headerShown: false,
           }}
         />
         <Tab.Screen
@@ -48,14 +67,18 @@ const Navigation = () => {
             tabBarIcon: ({focused}) => (
               <Image
                 source={require('../assets/icons/marvel.png')}
-                style={{width: 74, height: 74, top: -15}}
+                style={{
+                  width: 74,
+                  height: 74,
+                  top: showTabNavigator ? -15 : 15,
+                }}
               />
             ),
             headerShown: false,
           }}
         />
         <Tab.Screen
-          name="Series"
+          name="Favorites"
           component={SeriesScreen}
           options={{
             tabBarLabel: '',
@@ -67,9 +90,13 @@ const Navigation = () => {
                 return (
                   <FontAwesome
                     name={icon}
-                    size={25}
+                    size={35}
                     color="#000"
-                    style={{top: 6}}
+                    style={{
+                      height: 50,
+                      width: 40,
+                      top: 15,
+                    }}
                   />
                 );
               }
@@ -77,9 +104,13 @@ const Navigation = () => {
               return (
                 <FontAwesome5
                   name={icon}
-                  size={25}
+                  size={35}
                   color="#000"
-                  style={{top: 6}}
+                  style={{
+                    height: 40,
+                    width: 40,
+                    top: 10,
+                  }}
                 />
               );
             },
