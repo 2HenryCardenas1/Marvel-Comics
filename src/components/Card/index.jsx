@@ -1,10 +1,23 @@
+import {useNavigation} from '@react-navigation/native';
 import {Icon} from '@rneui/themed';
 import React from 'react';
-import {Image, Text, View} from 'react-native';
+import {Image, Pressable, Text, View} from 'react-native';
 import styles from './styles';
+
 const Card = () => {
+  const navigation = useNavigation();
+
+  const infoCharacter = {
+    name: 'Ajak',
+    image:
+      'https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2021/10/Quien-es-Ajak-el-personajes-de-Salma-Hayek-en-Eternals-compressed-1.jpg?resize=1280%2C1435&quality=80&ssl=1',
+    date: 'December 31, 1969',
+  };
+  goToDetails = () => {
+    navigation.navigate('Details', {infoCharacter});
+  };
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={goToDetails}>
       <View style={{width: '60%'}}>
         <Text
           style={{
@@ -134,7 +147,7 @@ const Card = () => {
           }}
         />
       </View>
-    </View>
+    </Pressable>
   );
 };
 

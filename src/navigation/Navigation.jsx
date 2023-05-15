@@ -4,9 +4,8 @@ import React, {useEffect, useState} from 'react';
 import {Image, Keyboard} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import HomeScreen from '../screens/Home';
-import SeriesScreen from '../screens/Series';
 import NavigationAuth from './NavigationAuth';
+import NavigationHome from './NavigationHome';
 const Tab = createBottomTabNavigator();
 const Navigation = () => {
   const [showTabNavigator, setShowTabNavigator] = useState(true);
@@ -28,7 +27,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Auth"
+        initialRouteName="NavigationHome"
         screenOptions={({route}) => ({
           tabBarActiveTintColor: '#E63838',
           tabBarHideOnKeyboard: true,
@@ -60,8 +59,8 @@ const Navigation = () => {
           }}
         />
         <Tab.Screen
-          name="Home"
-          component={HomeScreen}
+          name="NavigationHome"
+          component={NavigationHome}
           options={{
             tabBarLabel: '',
             tabBarIcon: ({focused}) => (
@@ -79,7 +78,7 @@ const Navigation = () => {
         />
         <Tab.Screen
           name="Favorites"
-          component={SeriesScreen}
+          component={NavigationHome}
           options={{
             tabBarLabel: '',
             tabBarIcon: ({focused}) => {
