@@ -8,6 +8,7 @@ import styles from './styles';
 import {Divider, Input} from '@rneui/themed';
 import {ScrollView} from 'react-native';
 import {initialValues, validationSchema} from './components/LoginFormData';
+import LogoImage from '../../../components/Logo';
 const LoginScreen = () => {
   const navigation = useNavigation();
 
@@ -19,12 +20,7 @@ const LoginScreen = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.containerImage}>
-        <Image
-          source={require('../../../assets/homeImages/Marvel_Logo.png')}
-          style={styles.image}
-        />
-      </View>
+      <LogoImage />
 
       <View
         style={{

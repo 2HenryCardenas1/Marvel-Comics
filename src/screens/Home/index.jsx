@@ -1,7 +1,8 @@
 import {SearchBar} from '@rneui/themed';
 import React, {useState} from 'react';
-import {Image, View} from 'react-native';
+import {View} from 'react-native';
 import Card from '../../components/Card';
+import LogoImage from '../../components/Logo';
 import styles from './styles';
 const HomeScreen = () => {
   const [search, setSearch] = useState('');
@@ -25,12 +26,7 @@ const HomeScreen = () => {
         inputStyle={{color: 'red', backgroundColor: 'white', borderRadius: 20}}
         cancelButtonProps={{color: 'white'}}
       />
-      <View style={styles.containerImage}>
-        <Image
-          source={require('../../assets/homeImages/Marvel_Logo.png')}
-          style={styles.image}
-        />
-      </View>
+      <LogoImage />
       <Card />
     </View>
   );
