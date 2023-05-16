@@ -1,8 +1,8 @@
 # Marvel-Comics
 
-## This is the interface designed in figma 🖼
+📱 This is a marvel mobile app for the view comics, series, and events for the universe marvel characters , this app was developed using  React Native.📱
 
-### Auth Screen
+## Design
+You find the design to this project in this [figma](https://www.figma.com/file/OVIf4ravAG70nZP4fDFqr4/Marvel?type=design&node-id=0%3A1&t=uQ1Sc1IsWybV56Bw-1)
 
-![login]('https://raw.githubusercontent.com/2HenryCardenas1/Marvel-Comics/main/figma/login.png')
-![register]('https://raw.githubusercontent.com/2HenryCardenas1/Marvel-Comics/main/figma/register.png')
+<p align="center"> <img src="https://github.com/2HenryCardenas1/Marvel-Comics/blob/main/figma/figma1.png" /> <img src="https://github.com/2HenryCardenas1/Marvel-Comics/blob/main/figma/figma2.png" /> </p>
