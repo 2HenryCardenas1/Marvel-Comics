@@ -1,9 +1,11 @@
+import {useNavigation} from '@react-navigation/native';
 import {BackgroundImage, Text} from '@rneui/base';
 import {Icon, Image} from '@rneui/themed';
 import React, {useEffect} from 'react';
 import {View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import styles from './styles';
+
 const Details = props => {
   const infoCharacter = {
     name: 'Ajak',
@@ -51,7 +53,7 @@ const Details = props => {
           style={{
             marginTop: 10,
           }}>
-          <Cards name={'test'} />
+          <Cards name={'comics'} />
           <Cards name={'series'} />
           <Cards name={'events'} />
         </View>
@@ -64,8 +66,17 @@ function Cards(name) {
   let image;
   let margin;
   let title;
+  const navigation = useNavigation();
 
-  if (name.name === 'test') {
+  const goTo = name => {
+    switch (name) {
+      case 'comics':
+        navigation.navigate('ComicsList');
+        break;
+    }
+  };
+
+  if (name.name === 'comics') {
     title = 'Comics';
     image = require('../../../assets/imagesFavorites/comic.png');
   } else if (name.name === 'series') {
@@ -111,6 +122,7 @@ function Cards(name) {
         color="black"
         type="material-community"
         size={25}
+        onPress={() => goTo(name.name)}
       />
     </View>
   );
