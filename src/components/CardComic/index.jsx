@@ -4,7 +4,8 @@ import React from 'react';
 import {View} from 'react-native';
 import {styles} from './style';
 
-function CardComic() {
+function CardComic({id}) {
+  console.log(id.id);
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>

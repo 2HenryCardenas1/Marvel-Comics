@@ -1,10 +1,13 @@
 import React from 'react';
+import {ScrollView} from 'react-native-gesture-handler';
 import {CardComic} from '../../../../components';
-import { ScrollView } from 'react-native-gesture-handler';
-function ComicsList() {
+
+function ComicsList(props) {
+  const {params} = props.route;
+
   return (
     <ScrollView>
-      <CardComic />
+      <CardComic id={params} />
     </ScrollView>
   );
 }

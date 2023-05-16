@@ -71,7 +71,7 @@ function Cards(name) {
   const goTo = name => {
     switch (name) {
       case 'comics':
-        navigation.navigate('ComicsList');
+        navigation.navigate('ComicsList',{id : 1011334});
         break;
     }
   };
