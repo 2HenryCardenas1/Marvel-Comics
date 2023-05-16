@@ -4,5 +4,5 @@
 
 ### Auth Screen
 
-![login]('https://github.com/2HenryCardenas1/Marvel-Comics/tree/main/figma/login.png')
-![register]('https://github.com/2HenryCardenas1/Marvel-Comics/tree/main/figma/register.png')
+![login]('https://raw.githubusercontent.com/2HenryCardenas1/Marvel-Comics/main/figma/login.png')
+![register]('https://raw.githubusercontent.com/2HenryCardenas1/Marvel-Comics/main/figma/register.png')
