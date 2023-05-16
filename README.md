@@ -2,4 +2,7 @@
 
 ## This is the interface designed in figma 🖼
 
-![login]('https://github.com/2HenryCardenas1/Marvel-Comics/figma/login.png')
+### Auth Screen
+
+![login]('https://github.com/2HenryCardenas1/Marvel-Comics/tree/main/figma/login.png')
+![register]('https://github.com/2HenryCardenas1/Marvel-Comics/tree/main/figma/register.png')
