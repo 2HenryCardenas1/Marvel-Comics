@@ -71,7 +71,12 @@ function Cards(name) {
   const goTo = name => {
     switch (name) {
       case 'comics':
-        navigation.navigate('ComicsList',{id : 1011334});
+        navigation.navigate('Comics', {
+          screen: 'ComicsList',
+          params: {
+            id: 1011334,
+          },
+        });
         break;
     }
   };

@@ -7,7 +7,7 @@ function ComicsList(props) {
 
   return (
     <ScrollView>
-      <CardComic id={params} />
+      <CardComic id={1} />
     </ScrollView>
   );
 }

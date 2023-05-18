@@ -1,8 +1,8 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import HomeScreen from '../screens/Home';
-import {ComicsList} from '../screens/Home/Details/Comics';
 import Details from '../screens/Home/Details/Details';
+import {NavigationComics} from './NavigationComics';
 
 const Stack = createStackNavigator();
 
@@ -24,16 +24,9 @@ const NavigationHome = () => {
 
       <Stack.Group screenOptions={{presentation: 'modal'}}>
         <Stack.Screen
-          name="ComicsList"
-          component={ComicsList}
-          options={{
-            title: 'Comics',
-            headerTitleAlign: 'center',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-              fontSize: 25,
-            },
-          }}
+          name="Comics"
+          component={NavigationComics}
+          options={{headerShown: false}}
         />
       </Stack.Group>
     </Stack.Navigator>

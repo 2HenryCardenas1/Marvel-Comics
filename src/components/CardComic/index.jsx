@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import {BackgroundImage, Image, Text} from '@rneui/base';
 import {Button, Icon} from '@rneui/themed';
 import React from 'react';
@@ -5,7 +6,16 @@ import {View} from 'react-native';
 import {styles} from './style';
 
 function CardComic({id}) {
-  console.log(id.id);
+  const navigation = useNavigation();
+  const goTo = () => {
+    navigation.navigate('Comics', {
+      screen: 'ComicDetails',
+      params: {
+        id: 1,
+      },
+    });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -52,7 +62,7 @@ function CardComic({id}) {
             color="white"
             type="material-community"
             size={25}
-            onPress={() => goTo(name.name)}
+            onPress={() => goTo()}
           />
         </Button>
       </View>
