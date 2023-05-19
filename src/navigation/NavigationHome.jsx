@@ -3,6 +3,7 @@ import React from 'react';
 import HomeScreen from '../screens/Home';
 import Details from '../screens/Home/Details/Details';
 import {NavigationComics} from './NavigationComics';
+import {NavigationEvents} from './NavigationEvents';
 import {NavigationSeries} from './NavigationSeries';
 
 const Stack = createStackNavigator();
@@ -32,6 +33,11 @@ const NavigationHome = () => {
         <Stack.Screen
           name="Series"
           component={NavigationSeries}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Events"
+          component={NavigationEvents}
           options={{headerShown: false}}
         />
       </Stack.Group>
