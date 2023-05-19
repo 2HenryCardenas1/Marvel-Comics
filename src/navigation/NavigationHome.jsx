@@ -3,6 +3,7 @@ import React from 'react';
 import HomeScreen from '../screens/Home';
 import Details from '../screens/Home/Details/Details';
 import {NavigationComics} from './NavigationComics';
+import {NavigationSeries} from './NavigationSeries';
 
 const Stack = createStackNavigator();
 
@@ -26,6 +27,11 @@ const NavigationHome = () => {
         <Stack.Screen
           name="Comics"
           component={NavigationComics}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Series"
+          component={NavigationSeries}
           options={{headerShown: false}}
         />
       </Stack.Group>

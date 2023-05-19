@@ -78,6 +78,13 @@ function Cards(name) {
           },
         });
         break;
+      case 'series':
+        navigation.navigate('Series', {
+          screen: 'SeriesList',
+          params: {
+            id: 1011334,
+          },
+        });
     }
   };
 
