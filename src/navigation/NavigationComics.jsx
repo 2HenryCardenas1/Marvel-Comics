@@ -1,8 +1,8 @@
 import {createStackNavigator} from '@react-navigation/stack';
 
 import React from 'react';
+import {Details} from '../components/Details/Details';
 import {ComicsList} from '../screens/Home/Details/Comics';
-import {ComicDetails} from '../screens/Home/Details/Comics/ComicDetails/ComicDetails';
 
 const Stack = createStackNavigator();
 
@@ -24,8 +24,8 @@ function NavigationComics() {
         }}
       />
       <Stack.Screen
-        name="ComicDetails"
-        component={ComicDetails}
+        name="ComicsDetails"
+        component={Details}
         options={{headerTransparent: true, headerTitle: ''}}
       />
     </Stack.Navigator>
