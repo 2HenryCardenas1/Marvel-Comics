@@ -4,13 +4,8 @@ import React, {useEffect} from 'react';
 import {View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import styles from './styles';
-
-function SerieDetail(props) {
-  const {
-    navigation,
-    route: {params},
-  } = props;
-
+function Details(props) {
+  //Receive info from the Card component
   const infoCharacter = {
     name: 'Incredible Hercules (2008) #120',
     image:
@@ -22,6 +17,24 @@ function SerieDetail(props) {
     characters: 'Ajak,Amadeus Cho, Hercules,Skrulls,Snowbird',
     price: 1.99,
   };
+
+  const messageButton = () => {
+    let message = 'See more of the serie';
+    if (params.type === 'events') {
+      message = '¡ See more of the event !';
+    } else if (params.type === 'comics') {
+      message = `Buy by $${infoCharacter.price}`;
+    }
+
+    return message;
+  };
+
+  const {
+    navigation,
+    route: {params},
+  } = props;
+
+  console.log(params.type);
 
   useEffect(() => {
     navigation.setOptions({
@@ -37,6 +50,7 @@ function SerieDetail(props) {
       ),
     });
   }, [navigation, params]);
+
   return (
     <ScrollView>
       <BackgroundImage
@@ -55,6 +69,23 @@ function SerieDetail(props) {
           <Text style={{fontSize: 16, lineHeight: 30, textAlign: 'left'}}>
             {infoCharacter.details}
           </Text>
+          {params.type === 'events' ? (
+            <View>
+              <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 15}}>
+                Date init:
+                <Text style={{fontSize: 16, lineHeight: 30}}>
+                  {' ' + infoCharacter.characters}
+                </Text>
+              </Text>
+              <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 15}}>
+                Date finished :
+                <Text style={{fontSize: 16, lineHeight: 30}}>
+                  {' ' + infoCharacter.characters}
+                </Text>
+              </Text>
+            </View>
+          ) : null}
+
           <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 15}}>
             Characters :
             <Text style={{fontSize: 16, lineHeight: 30}}>
@@ -64,7 +95,7 @@ function SerieDetail(props) {
         </View>
 
         <Button
-          title={'See more of the serie'}
+          title={messageButton()}
           containerStyle={{
             marginTop: 20,
             marginBottom: 20,
@@ -80,4 +111,4 @@ function SerieDetail(props) {
   );
 }
 
-export {SerieDetail};
+export {Details};
