@@ -20,6 +20,7 @@ function CardSeries() {
       screen: 'SeriesDetails',
       params: {
         id: 1,
+        type: 'series',
       },
     });
   };

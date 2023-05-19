@@ -7,6 +7,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import styles from './styles';
 
 const Details = props => {
+  //Receive info from the Card component
   const infoCharacter = {
     name: 'Ajak',
     image:
@@ -63,6 +64,7 @@ const Details = props => {
 };
 
 function Cards(name) {
+  //Receive info from the Card component  and send it to the Details component
   let image;
   let margin;
   let title;
@@ -81,6 +83,14 @@ function Cards(name) {
       case 'series':
         navigation.navigate('Series', {
           screen: 'SeriesList',
+          params: {
+            id: 1011334,
+          },
+        });
+        break;
+      case 'events':
+        navigation.navigate('Events', {
+          screen: 'EventsList',
           params: {
             id: 1011334,
           },

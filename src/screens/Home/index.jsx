@@ -6,6 +6,9 @@ import LogoImage from '../../components/Logo';
 import styles from './styles';
 const HomeScreen = () => {
   const [search, setSearch] = useState('');
+
+  //useEffect to send info to the Card components
+
   return (
     <View style={styles.container}>
       <SearchBar
@@ -27,6 +30,10 @@ const HomeScreen = () => {
         cancelButtonProps={{color: 'white'}}
       />
       <LogoImage />
+
+      {/*
+      FlatList
+      */}
       <Card />
     </View>
   );
