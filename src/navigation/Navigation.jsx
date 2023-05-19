@@ -5,6 +5,7 @@ import {Image, Keyboard} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import NavigationAuth from './NavigationAuth';
+import {NavigationFavorites} from './NavigationFavorites';
 import NavigationHome from './NavigationHome';
 const Tab = createBottomTabNavigator();
 const Navigation = () => {
@@ -27,7 +28,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="NavigationHome"
+        initialRouteName="NavigationFavorite"
         screenOptions={({route}) => ({
           tabBarActiveTintColor: '#E63838',
           tabBarHideOnKeyboard: true,
@@ -77,8 +78,8 @@ const Navigation = () => {
           }}
         />
         <Tab.Screen
-          name="Favorites"
-          component={NavigationHome}
+          name="NavigationFavorite"
+          component={NavigationFavorites}
           options={{
             tabBarLabel: '',
             tabBarIcon: ({focused}) => {
@@ -113,6 +114,7 @@ const Navigation = () => {
                 />
               );
             },
+            headerShown: false,
           }}
         />
       </Tab.Navigator>
