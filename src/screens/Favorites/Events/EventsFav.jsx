@@ -1,11 +1,14 @@
 import React from 'react';
 import {Text, View} from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import { CardList } from '../../../components';
 
 function EventsFav() {
   return (
-    <View>
-      <Text>EventsFav</Text>
-    </View>
+    <ScrollView>
+      <CardList id={1} type="events" />
+    </ScrollView>
+  
   );
 }
 

@@ -1,11 +1,12 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
+import {CardList} from '../../../components';
 
 function FavComics() {
   return (
-    <View>
-      <Text>FavComics</Text>
-    </View>
+    <ScrollView>
+      <CardList id={1} type="comics" />
+    </ScrollView>
   );
 }
 

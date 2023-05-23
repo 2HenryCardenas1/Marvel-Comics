@@ -1,11 +1,12 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
+import {CardSeries} from '../../../components';
 
 function SeriesFav() {
   return (
-    <View>
-      <Text>SeriesFav</Text>
-    </View>
+    <ScrollView>
+      <CardSeries id={1} />
+    </ScrollView>
   );
 }
 
