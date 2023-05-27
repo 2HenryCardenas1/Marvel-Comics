@@ -1,13 +1,14 @@
 import {useNavigation} from '@react-navigation/native';
 import {Icon} from '@rneui/themed';
+import {DateTime} from 'luxon';
 import React from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
 import styles from './styles';
-
-const Card = () => {
+const Card = props => {
   const navigation = useNavigation();
+  const {character} = props;
 
-  const infoCharacter = {
+    const infoCharacter = {
     name: 'Ajak',
     image:
       'https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2021/10/Quien-es-Ajak-el-personajes-de-Salma-Hayek-en-Eternals-compressed-1.jpg?resize=1280%2C1435&quality=80&ssl=1',
@@ -24,15 +25,17 @@ const Card = () => {
             fontSize: 20,
             fontWeight: 'bold',
             color: 'black',
-          }}>
-          Ajak
+            width: '80%',
+          }}
+          numberOfLines={1}>
+          {character.name}
         </Text>
         <Text
           style={{
             fontSize: 15,
             fontWeight: '500',
           }}>
-          December 31, <Text>1969</Text>
+          {DateTime.fromISO(character.dateModified).toFormat('MMMM dd, yyyy')}
         </Text>
 
         <View
@@ -62,7 +65,7 @@ const Card = () => {
                   marginRight: 5,
                   fontWeight: '500',
                 }}>
-                2
+                {character.totalComics}
               </Text>
               <Icon name="book" size={15} color="black" type="font-awesome6" />
             </View>
@@ -90,7 +93,7 @@ const Card = () => {
                   marginRight: 5,
                   fontWeight: '500',
                 }}>
-                20
+                {character.totalSeries}
               </Text>
               <Icon name="tv" size={15} color="black" type="font-awesome6" />
             </View>
@@ -118,7 +121,7 @@ const Card = () => {
                   marginRight: 5,
                   fontWeight: '500',
                 }}>
-                1
+                {character.totalEvents}
               </Text>
               <Icon
                 name="calendar"
@@ -139,7 +142,7 @@ const Card = () => {
         }}>
         <Image
           source={{
-            uri: 'https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2021/10/Quien-es-Ajak-el-personajes-de-Salma-Hayek-en-Eternals-compressed-1.jpg?resize=1280%2C1435&quality=80&ssl=1',
+            uri: `${character.image}`,
           }}
           style={{
             height: '100%',
