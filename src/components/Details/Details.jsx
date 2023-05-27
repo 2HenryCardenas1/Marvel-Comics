@@ -34,7 +34,7 @@ function Details(props) {
     route: {params},
   } = props;
 
-  console.log(params.type);
+  
 
   useEffect(() => {
     navigation.setOptions({
