@@ -1,24 +1,18 @@
 import {useNavigation} from '@react-navigation/native';
 import {BackgroundImage, Text} from '@rneui/base';
 import {Icon, Image} from '@rneui/themed';
+import {DateTime} from 'luxon';
 import React, {useEffect} from 'react';
 import {View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import styles from './styles';
-
 const Details = props => {
-  //Receive info from the Card component
-  const infoCharacter = {
-    name: 'Ajak',
-    image:
-      'https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2021/10/Quien-es-Ajak-el-personajes-de-Salma-Hayek-en-Eternals-compressed-1.jpg?resize=1280%2C1435&quality=80&ssl=1',
-    date: 'December 31, 1969',
-  };
-
   const {
     navigation,
     route: {params},
   } = props;
+
+  const character = params.character;
 
   useEffect(() => {
     navigation.setOptions({
@@ -38,33 +32,37 @@ const Details = props => {
   return (
     <ScrollView>
       <View>
-        <BackgroundImage
-          source={{uri: infoCharacter.image}}
-          style={styles.image}
-        />
+        <BackgroundImage source={{uri: character.image}} style={styles.image} />
       </View>
 
       <View
         style={{
           margin: 20,
         }}>
-        <Text style={styles.title}>{infoCharacter.name}</Text>
-        <Text style={styles.date}>{infoCharacter.date}</Text>
+        <Text style={styles.title}>{character.name}</Text>
+        <Text style={styles.date}>
+          {DateTime.fromISO(character.dateModified).toFormat('MMMM dd, yyyy')}
+        </Text>
         <View
           style={{
             marginTop: 10,
           }}>
-          <Cards name={'comics'} />
-          <Cards name={'series'} />
-          <Cards name={'events'} />
+          {character.totalComics === 0 ? null : (
+            <Cards name={'comics'} characterId={character.id} />
+          )}
+          {character.totalSeries === 0 ? null : (
+            <Cards name={'series'} characterId={character.id} />
+          )}
+          {character.totalEvents === 0 ? null : (
+            <Cards name={'events'} characterId={character.id} />
+          )}
         </View>
       </View>
     </ScrollView>
   );
 };
 
-function Cards(name) {
-  //Receive info from the Card component  and send it to the Details component
+function Cards({name, characterId}) {
   let image;
   let margin;
   let title;
@@ -76,7 +74,7 @@ function Cards(name) {
         navigation.navigate('Comics', {
           screen: 'ComicsList',
           params: {
-            id: 1011334,
+            id: characterId,
           },
         });
         break;
@@ -84,7 +82,7 @@ function Cards(name) {
         navigation.navigate('Series', {
           screen: 'SeriesList',
           params: {
-            id: 1011334,
+            id: characterId,
           },
         });
         break;
@@ -92,16 +90,16 @@ function Cards(name) {
         navigation.navigate('Events', {
           screen: 'EventsList',
           params: {
-            id: 1011334,
+            id: characterId,
           },
         });
     }
   };
 
-  if (name.name === 'comics') {
+  if (name === 'comics') {
     title = 'Comics';
     image = require('../../../assets/imagesFavorites/comic.png');
-  } else if (name.name === 'series') {
+  } else if (name === 'series') {
     title = 'Series';
     image = require('../../../assets/imagesFavorites/popcorns.png');
   } else {
@@ -119,7 +117,7 @@ function Cards(name) {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginVertical: name.name === 'series' ? 10 : 0,
+        marginVertical: name === 'series' ? 10 : 0,
         marginBottom: margin,
       }}>
       <Image
@@ -144,7 +142,7 @@ function Cards(name) {
         color="black"
         type="material-community"
         size={25}
-        onPress={() => goTo(name.name)}
+        onPress={() => goTo(name)}
       />
     </View>
   );

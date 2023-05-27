@@ -10,14 +10,9 @@ const Card = props => {
   const navigation = useNavigation();
   const {character} = props;
 
-  const infoCharacter = {
-    name: 'Ajak',
-    image:
-      'https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2021/10/Quien-es-Ajak-el-personajes-de-Salma-Hayek-en-Eternals-compressed-1.jpg?resize=1280%2C1435&quality=80&ssl=1',
-    date: 'December 31, 1969',
-  };
+  
   goToDetails = () => {
-    navigation.navigate('Details', {infoCharacter});
+    navigation.navigate('Details', {character});
   };
   return (
     <Pressable style={styles.container} onPress={goToDetails}>
