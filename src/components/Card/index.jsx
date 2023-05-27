@@ -4,11 +4,13 @@ import {DateTime} from 'luxon';
 import React from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
 import styles from './styles';
+
+import {nFormatter} from '../../utils/numberFormatter';
 const Card = props => {
   const navigation = useNavigation();
   const {character} = props;
 
-    const infoCharacter = {
+  const infoCharacter = {
     name: 'Ajak',
     image:
       'https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2021/10/Quien-es-Ajak-el-personajes-de-Salma-Hayek-en-Eternals-compressed-1.jpg?resize=1280%2C1435&quality=80&ssl=1',
@@ -65,7 +67,7 @@ const Card = props => {
                   marginRight: 5,
                   fontWeight: '500',
                 }}>
-                {character.totalComics}
+                {nFormatter(character.totalComics)}
               </Text>
               <Icon name="book" size={15} color="black" type="font-awesome6" />
             </View>
@@ -93,7 +95,7 @@ const Card = props => {
                   marginRight: 5,
                   fontWeight: '500',
                 }}>
-                {character.totalSeries}
+                {nFormatter(character.totalSeries)}
               </Text>
               <Icon name="tv" size={15} color="black" type="font-awesome6" />
             </View>
@@ -121,7 +123,7 @@ const Card = props => {
                   marginRight: 5,
                   fontWeight: '500',
                 }}>
-                {character.totalEvents}
+                {nFormatter(character.totalEvents)}
               </Text>
               <Icon
                 name="calendar"
