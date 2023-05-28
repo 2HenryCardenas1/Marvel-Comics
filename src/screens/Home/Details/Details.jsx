@@ -3,7 +3,7 @@ import {BackgroundImage, Text} from '@rneui/base';
 import {Icon, Image} from '@rneui/themed';
 import {DateTime} from 'luxon';
 import React, {useEffect} from 'react';
-import {View} from 'react-native';
+import {View,Pressable} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import styles from './styles';
 const Details = props => {
@@ -48,13 +48,25 @@ const Details = props => {
             marginTop: 10,
           }}>
           {character.totalComics === 0 ? null : (
-            <Cards name={'comics'} characterId={character.id} />
+            <Cards
+              name={'comics'}
+              characterId={character.id}
+              total={character.totalComics}
+            />
           )}
           {character.totalSeries === 0 ? null : (
-            <Cards name={'series'} characterId={character.id} />
+            <Cards
+              name={'series'}
+              characterId={character.id}
+              total={character.totalSeries}
+            />
           )}
           {character.totalEvents === 0 ? null : (
-            <Cards name={'events'} characterId={character.id} />
+            <Cards
+              name={'events'}
+              characterId={character.id}
+              total={character.totalEvents}
+            />
           )}
         </View>
       </View>
@@ -62,7 +74,7 @@ const Details = props => {
   );
 };
 
-function Cards({name, characterId}) {
+function Cards({name, characterId, total}) {
   let image;
   let margin;
   let title;
@@ -75,6 +87,7 @@ function Cards({name, characterId}) {
           screen: 'ComicsList',
           params: {
             id: characterId,
+            total: total,
           },
         });
         break;
@@ -83,6 +96,7 @@ function Cards({name, characterId}) {
           screen: 'SeriesList',
           params: {
             id: characterId,
+            total: total,
           },
         });
         break;
@@ -91,6 +105,7 @@ function Cards({name, characterId}) {
           screen: 'EventsList',
           params: {
             id: characterId,
+            total: total,
           },
         });
     }
@@ -109,7 +124,7 @@ function Cards({name, characterId}) {
   }
 
   return (
-    <View
+    <Pressable
       style={{
         backgroundColor: 'white',
         padding: 15,
@@ -119,7 +134,8 @@ function Cards({name, characterId}) {
         alignItems: 'center',
         marginVertical: name === 'series' ? 10 : 0,
         marginBottom: margin,
-      }}>
+      }}
+      onPress={() => goTo(name)}>
       <Image
         source={image}
         style={{
@@ -142,9 +158,8 @@ function Cards({name, characterId}) {
         color="black"
         type="material-community"
         size={25}
-        onPress={() => goTo(name)}
       />
-    </View>
+    </Pressable>
   );
 }
 

@@ -5,8 +5,9 @@ import React from 'react';
 import {View} from 'react-native';
 import {styles} from './style';
 
-function CardList({id, type}) {
+function CardList({id, type, data}) {
   //Receive info from the Card component
+
   const navigation = useNavigation();
   const goTo = () => {
     switch (type) {
@@ -14,8 +15,9 @@ function CardList({id, type}) {
         navigation.navigate('Comics', {
           screen: 'ComicsDetails',
           params: {
-            id: 1,
+            id: id,
             type: 'comics',
+            data: data,
           },
         });
         break;
@@ -35,13 +37,13 @@ function CardList({id, type}) {
       <View style={styles.imageContainer}>
         <BackgroundImage
           source={{
-            uri: 'http://i.annihil.us/u/prod/marvel/i/mg/d/03/58dd080719806.jpg',
+            uri: `${data.image}`,
           }}
           style={styles.imageBackground}
         />
         <Image
           source={{
-            uri: 'http://i.annihil.us/u/prod/marvel/i/mg/d/03/58dd080719806.jpg',
+            uri: `${data.image}`,
           }}
           style={styles.image}
         />
@@ -49,7 +51,7 @@ function CardList({id, type}) {
 
       <View style={styles.titleContainer}>
         <Text style={styles.title} numberOfLines={2}>
-          The Initiative (2007)
+          {data.title}
         </Text>
 
         {type === 'events' ? <Text style={styles.date}>2007-2008</Text> : null}
@@ -63,7 +65,8 @@ function CardList({id, type}) {
           containerStyle={styles.bottomContainer}
           buttonStyle={{
             backgroundColor: '#ED1D24',
-          }}>
+          }}
+          onPress={() => goTo()}>
           <Text
             style={{
               color: 'white',
@@ -78,7 +81,6 @@ function CardList({id, type}) {
             color="white"
             type="material-community"
             size={25}
-            onPress={() => goTo()}
           />
         </Button>
       </View>

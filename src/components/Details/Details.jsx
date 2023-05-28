@@ -1,40 +1,30 @@
 import {BackgroundImage, Text} from '@rneui/base';
 import {Button, Icon} from '@rneui/themed';
 import React, {useEffect} from 'react';
-import {View} from 'react-native';
+import {Linking, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import styles from './styles';
 function Details(props) {
-  //Receive info from the Card component
-  const infoCharacter = {
-    name: 'Incredible Hercules (2008) #120',
-    image:
-      'https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2021/10/Quien-es-Ajak-el-personajes-de-Salma-Hayek-en-Eternals-compressed-1.jpg?resize=1280%2C1435&quality=80&ssl=1',
-    date: 'December 31, 1969',
-    details:
-      'SACRED INVASION PART 5 Hercules leads the ragged remains of his God Squad into desperate battle with the unimaginably powerful Skrull pantheon -- and if they lose, Earth dies!',
+  const {
+    navigation,
+    route: {params},
+  } = props;
 
-    characters: 'Ajak,Amadeus Cho, Hercules,Skrulls,Snowbird',
-    price: 1.99,
-  };
+  const character = params.data;
+  const characters = character.characters.items;
+  const price = character.price[0].price;
+
 
   const messageButton = () => {
     let message = 'See more of the serie';
     if (params.type === 'events') {
       message = '¡ See more of the event !';
     } else if (params.type === 'comics') {
-      message = `Buy by $${infoCharacter.price}`;
+      message = `Buy by $${price}`;
     }
 
     return message;
   };
-
-  const {
-    navigation,
-    route: {params},
-  } = props;
-
-  
 
   useEffect(() => {
     navigation.setOptions({
@@ -55,19 +45,19 @@ function Details(props) {
     <ScrollView>
       <BackgroundImage
         source={{
-          uri: infoCharacter.image,
+          uri: character.image,
         }}
         style={styles.image}
       />
 
       <View style={styles.containerDetails}>
         <View style={styles.containerTitle}>
-          <Text style={styles.title}>{infoCharacter.name}</Text>
+          <Text style={styles.title}>{character.title}</Text>
         </View>
 
         <View>
           <Text style={{fontSize: 16, lineHeight: 30, textAlign: 'left'}}>
-            {infoCharacter.details}
+            {character.description}.
           </Text>
           {params.type === 'events' ? (
             <View>
@@ -89,7 +79,12 @@ function Details(props) {
           <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 15}}>
             Characters :
             <Text style={{fontSize: 16, lineHeight: 30}}>
-              {' ' + infoCharacter.characters}
+              {characters.map((character, index) => {
+                if (index === characters.length - 1) {
+                  return character.name + '.';
+                }
+                return character.name + ', ';
+              })}
             </Text>
           </Text>
         </View>
@@ -105,6 +100,9 @@ function Details(props) {
           }}
           buttonStyle={{backgroundColor: '#ED1D24'}}
           titleStyle={{color: 'white', fontSize: 20, fontWeight: 'bold'}}
+          onPress={() => {
+            Linking.openURL(character.url);
+          }}
         />
       </View>
     </ScrollView>

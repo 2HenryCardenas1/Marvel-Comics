@@ -9,6 +9,11 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: 5,
     borderBottomStartRadius: 5,
     justifyContent: 'space-between',
+    shadowColor: '#000',
+    shadowOffset: {width: 10, height: 0},
+    elevation: 5,
+    marginVertical: 8,
+    marginHorizontal: 8,
   },
 
   imageContainer: {
