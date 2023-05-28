@@ -9,10 +9,7 @@ import {DateTime} from 'luxon';
 
 function CardList({id, type, data}) {
   //Receive info from the Card component
-  console.log(data.dateStart.slice(0, 10));
-  console.log(
-    DateTime.fromISO(data.dateStart.slice(0, 10)).toFormat('MMMM dd yyyy'),
-  );
+  
   const navigation = useNavigation();
   const goTo = () => {
     switch (type) {
