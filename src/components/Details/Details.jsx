@@ -1,5 +1,6 @@
 import {BackgroundImage, Text} from '@rneui/base';
 import {Button, Icon} from '@rneui/themed';
+import {DateTime} from 'luxon';
 import React, {useEffect} from 'react';
 import {Linking, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -12,7 +13,7 @@ function Details(props) {
 
   const character = params.data;
   const characters = character.characters.items;
-  
+
   const messageButton = () => {
     let message = 'See more of the serie';
     if (params.type === 'events') {
@@ -63,13 +64,19 @@ function Details(props) {
               <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 15}}>
                 Date init:
                 <Text style={{fontSize: 16, lineHeight: 30}}>
-                  {' ' + infoCharacter.characters}
+                  {' ' +
+                    DateTime.fromISO(character.dateStart.slice(0, 10)).toFormat(
+                      'MMMM dd, yyyy',
+                    )}
                 </Text>
               </Text>
               <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 15}}>
                 Date finished :
                 <Text style={{fontSize: 16, lineHeight: 30}}>
-                  {' ' + infoCharacter.characters}
+                  {' ' +
+                    DateTime.fromISO(character.dateEnd.slice(0, 10)).toFormat(
+                      'MMMM dd, yyyy',
+                    )}
                 </Text>
               </Text>
             </View>

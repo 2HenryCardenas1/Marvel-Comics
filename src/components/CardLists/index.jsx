@@ -5,9 +5,14 @@ import React from 'react';
 import {View} from 'react-native';
 import {styles} from './style';
 
+import {DateTime} from 'luxon';
+
 function CardList({id, type, data}) {
   //Receive info from the Card component
-
+  console.log(data.dateStart.slice(0, 10));
+  console.log(
+    DateTime.fromISO(data.dateStart.slice(0, 10)).toFormat('MMMM dd yyyy'),
+  );
   const navigation = useNavigation();
   const goTo = () => {
     switch (type) {
@@ -27,6 +32,7 @@ function CardList({id, type, data}) {
           params: {
             id: 1,
             type: 'events',
+            data: data,
           },
         });
     }
@@ -54,7 +60,13 @@ function CardList({id, type, data}) {
           {data.title}
         </Text>
 
-        {type === 'events' ? <Text style={styles.date}>2007-2008</Text> : null}
+        {type === 'events' ? (
+          <Text style={styles.date}>
+            {DateTime.fromISO(data.dateStart.slice(0, 10)).toFormat(
+              'MMMM dd, yyyy',
+            )}
+          </Text>
+        ) : null}
       </View>
       <View
         style={{
