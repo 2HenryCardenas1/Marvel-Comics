@@ -1,16 +1,19 @@
+import {Text} from '@rneui/base';
 import React, {useEffect, useState} from 'react';
-import {Dimensions, FlatList, View} from 'react-native';
+import {ActivityIndicator, Dimensions, FlatList, View} from 'react-native';
 import {getEventsByCharacterId} from '../../../../api/events';
 import {CardList} from '../../../../components';
 const {width} = Dimensions.get('window');
+const {height} = Dimensions.get('screen');
 function EventsList(props) {
   const {params} = props.route;
 
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
-      loadEvents();
+      loadEvents().then(() => setLoading(false));
     })();
   }, []);
   const loadEvents = async () => {
@@ -39,6 +42,24 @@ function EventsList(props) {
   };
   return (
     <View>
+      {loading && (
+        <View>
+          <ActivityIndicator
+            size="large"
+            color="#0000ff"
+            style={{
+              marginTop: height / 2 - 50,
+            }}
+          />
+          <Text
+            style={{
+              textAlign: 'center',
+              fontSize: 16,
+            }}>
+            Loading events ...
+          </Text>
+        </View>
+      )}
       <FlatList
         data={events}
         keyExtractor={item => item.id.toString()}

@@ -1,16 +1,19 @@
+import {Text} from '@rneui/base';
 import React, {useEffect, useState} from 'react';
-import {Dimensions, FlatList, View} from 'react-native';
+import {ActivityIndicator, Dimensions, FlatList, View} from 'react-native';
 import {getSeriesByCharacterId} from '../../../../api/series';
 import {CardSeries} from '../../../../components';
 
 const {width} = Dimensions.get('window');
+const {height} = Dimensions.get('screen');
 function SeriesList(props) {
   const {params} = props.route;
   const [series, setSeries] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
-      loadSeries();
+      loadSeries().then(() => setLoading(false));
     })();
   }, []);
 
@@ -41,6 +44,24 @@ function SeriesList(props) {
 
   return (
     <View>
+      {loading && (
+        <View>
+          <ActivityIndicator
+            size="large"
+            color="#0000ff"
+            style={{
+              marginTop: height / 2 - 50,
+            }}
+          />
+          <Text
+            style={{
+              textAlign: 'center',
+              fontSize: 16,
+            }}>
+            Loading series ...
+          </Text>
+        </View>
+      )}
       <FlatList
         data={series}
         keyExtractor={item => item.id.toString()}

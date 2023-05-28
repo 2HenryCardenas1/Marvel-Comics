@@ -1,17 +1,21 @@
+import {Text} from '@rneui/base';
 import React, {useEffect, useState} from 'react';
-import {Dimensions, View} from 'react-native';
+import {ActivityIndicator, Dimensions, View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import {getComicByCharacterId} from '../../../../api/comics';
 import {CardList} from '../../../../components';
 const {width} = Dimensions.get('window');
+const {height} = Dimensions.get('screen');
 function ComicsList(props) {
   const {params} = props.route;
 
   const [comics, setComics] = useState([]);
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     (async () => {
-      loadComics();
+      loadComics().then(() => setLoading(false));
     })();
   }, []);
 
@@ -43,6 +47,25 @@ function ComicsList(props) {
 
   return (
     <View>
+      {loading && (
+        <View>
+          <ActivityIndicator
+            size="large"
+            color="#0000ff"
+            style={{
+              marginTop: height / 2 - 50,
+            }}
+          />
+          <Text
+            style={{
+              textAlign: 'center',
+              fontSize: 16,
+            }}>
+            Loading comics ...
+          </Text>
+        </View>
+      )}
+
       <FlatList
         data={comics}
         keyExtractor={item => item.id.toString()}
