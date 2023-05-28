@@ -12,14 +12,13 @@ function Details(props) {
 
   const character = params.data;
   const characters = character.characters.items;
-  const price = character.price[0].price;
-
-
+  
   const messageButton = () => {
     let message = 'See more of the serie';
     if (params.type === 'events') {
       message = '¡ See more of the event !';
     } else if (params.type === 'comics') {
+      const price = character.price[0].price;
       message = `Buy by $${price}`;
     }
 
@@ -57,7 +56,7 @@ function Details(props) {
 
         <View>
           <Text style={{fontSize: 16, lineHeight: 30, textAlign: 'left'}}>
-            {character.description}.
+            {character.description === null ? null : character.description}.
           </Text>
           {params.type === 'events' ? (
             <View>

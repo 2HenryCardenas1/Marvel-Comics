@@ -5,7 +5,7 @@ import React from 'react';
 import {View} from 'react-native';
 import {styles} from './styles';
 
-function CardSeries() {
+function CardSeries({id, data}) {
   const infoCharacter = {
     name: 'Incredible Hercules  (2008 - 2010)',
     image:
@@ -19,8 +19,9 @@ function CardSeries() {
     navigation.navigate('Series', {
       screen: 'SeriesDetails',
       params: {
-        id: 1,
+        id: id,
         type: 'series',
+        data: data,
       },
     });
   };
@@ -29,15 +30,15 @@ function CardSeries() {
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <BackgroundImage
-          source={{uri: infoCharacter.image}}
+          source={{uri: data.image}}
           style={styles.imageBackground}
         />
-        <Image source={{uri: infoCharacter.image}} style={styles.image} />
+        <Image source={{uri: data.image}} style={styles.image} />
       </View>
 
       <View style={styles.titleContainer}>
         <Text style={styles.title} numberOfLines={2}>
-          {infoCharacter.name}
+          {data.title}
         </Text>
       </View>
       <View
@@ -49,7 +50,8 @@ function CardSeries() {
           containerStyle={styles.bottomContainer}
           buttonStyle={{
             backgroundColor: '#ED1D24',
-          }}>
+          }}
+          onPress={() => goTo()}>
           <Text
             style={{
               color: 'white',
@@ -64,7 +66,6 @@ function CardSeries() {
             color="white"
             type="material-community"
             size={25}
-            onPress={() => goTo()}
           />
         </Button>
       </View>

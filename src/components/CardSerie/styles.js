@@ -1,12 +1,14 @@
-import {StyleSheet} from 'react-native';
-
+import {Dimensions, StyleSheet} from 'react-native';
+const {width} = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     height: 320,
+    width: width - 50,
     justifyContent: 'space-between',
     marginHorizontal: 30,
     backgroundColor: '#D9D9D9',
     borderRadius: 5,
+    marginVertical: 10,
   },
 
   imageContainer: {
