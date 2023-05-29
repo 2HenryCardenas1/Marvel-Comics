@@ -49,7 +49,7 @@ function EventsList(props) {
         <View>
           <ActivityIndicator
             size="large"
-            color="#0000ff"
+            color="#ED1D24"
             style={{
               marginTop: height / 2 - 50,
             }}
