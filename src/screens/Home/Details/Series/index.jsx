@@ -22,8 +22,6 @@ function SeriesList(props) {
     try {
       const response = await getSeriesByCharacterId(params.id, offset);
       setLoadMore(true);
-
-      console.log('response', response);
       if (response.data.results.length === 0) setLoadMore(false);
       setOffset(offset + 10);
       const seriesArray = [];
