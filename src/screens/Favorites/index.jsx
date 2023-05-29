@@ -20,11 +20,11 @@ function CardFav({name}) {
   const image = () => {
     switch (name) {
       case 'comics':
-        return require('../../assets/imagesFavorites/comic.png');
+        return require('../../../android/app/src/main/assets/imagesFavorites/comic.png');
       case 'series':
-        return require('../../assets/imagesFavorites/popcorns.png');
+        return require('../../../android/app/src/main/assets/imagesFavorites/popcorns.png');
       case 'events':
-        return require('../../assets/imagesFavorites/events.png');
+        return require('../../../android/app/src/main/assets/imagesFavorites/events.png');
     }
   };
 

@@ -3,7 +3,7 @@ import {BackgroundImage, Text} from '@rneui/base';
 import {Icon, Image} from '@rneui/themed';
 import {DateTime} from 'luxon';
 import React, {useEffect} from 'react';
-import {View,Pressable} from 'react-native';
+import {Pressable, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import styles from './styles';
 const Details = props => {
@@ -113,13 +113,13 @@ function Cards({name, characterId, total}) {
 
   if (name === 'comics') {
     title = 'Comics';
-    image = require('../../../assets/imagesFavorites/comic.png');
+    image = require('../../../../android/app/src/main/assets/imagesFavorites/comic.png');
   } else if (name === 'series') {
     title = 'Series';
-    image = require('../../../assets/imagesFavorites/popcorns.png');
+    image = require('../../../../android/app/src/main/assets/imagesFavorites/popcorns.png');
   } else {
     title = 'Events';
-    image = require('../../../assets/imagesFavorites/events.png');
+    image = require('../../../../android/app/src/main/assets/imagesFavorites/events.png');
     margin = 15;
   }
 

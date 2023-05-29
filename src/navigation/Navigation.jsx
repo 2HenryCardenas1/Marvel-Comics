@@ -42,7 +42,7 @@ const Navigation = () => {
               if (focused) {
                 return (
                   <Image
-                    source={require('../assets/icons/login2.png')}
+                    source={require('../../android/app/src/main/assets/icons/login2.png')}
                     style={{width: 40, height: 40, top: 6}}
                   />
                 );
@@ -50,7 +50,7 @@ const Navigation = () => {
 
               return (
                 <Image
-                  source={require('../assets/icons/login.png')}
+                  source={require('../../android/app/src/main/assets/icons/login.png')}
                   style={{width: 40, height: 40, top: 6}}
                 />
               );
@@ -66,7 +66,7 @@ const Navigation = () => {
             tabBarLabel: '',
             tabBarIcon: ({focused}) => (
               <Image
-                source={require('../assets/icons/marvel.png')}
+                source={require('../../android/app/src/main/assets/icons/marvel.png')}
                 style={{
                   width: 74,
                   height: 74,
