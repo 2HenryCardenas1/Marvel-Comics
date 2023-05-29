@@ -58,7 +58,7 @@ function ComicsList(props) {
             size="large"
             color="#ED1D24"
             style={{
-              marginTop: height / 2 - 50,
+              marginTop: height / 2 - 100 ,
             }}
           />
           <Text
