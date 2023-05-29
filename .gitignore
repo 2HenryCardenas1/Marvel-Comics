@@ -64,3 +64,5 @@ yarn-error.log
 
 # 
 src/key/
+
+android/app/release
