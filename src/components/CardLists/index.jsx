@@ -40,13 +40,13 @@ function CardList({id, type, data}) {
       <View style={styles.imageContainer}>
         <BackgroundImage
           source={{
-            uri: `${data.image}`,
+            uri: data.image,
           }}
           style={styles.imageBackground}
         />
         <Image
           source={{
-            uri: `${data.image}`,
+            uri: data.image,
           }}
           style={styles.image}
         />

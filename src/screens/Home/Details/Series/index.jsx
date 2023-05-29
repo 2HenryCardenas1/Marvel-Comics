@@ -27,7 +27,7 @@ function SeriesList(props) {
           id: serie.id,
           title: serie.title,
           description: serie.description,
-          image: `${serie.thumbnail.path}.${serie.thumbnail.extension}`,
+          image: serie.thumbnail.path + '.' + serie.thumbnail.extension,
           characters: serie.characters,
           url: serie.urls[0].url,
         });

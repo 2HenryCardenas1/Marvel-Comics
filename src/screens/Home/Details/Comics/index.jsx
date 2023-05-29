@@ -30,7 +30,7 @@ function ComicsList(props) {
           title: comic.title,
           description: comic.description,
           price: comic.prices,
-          image: `${comic.thumbnail.path}.${comic.thumbnail.extension}`,
+          image: comic.thumbnail.path + '.' + comic.thumbnail.extension,
           characters: comic.characters,
           url: comic.urls[0].url,
         });

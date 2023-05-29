@@ -57,7 +57,7 @@ function Details(props) {
 
         <View>
           <Text style={{fontSize: 16, lineHeight: 30, textAlign: 'left'}}>
-            {character.description === null ? null : character.description}.
+            {character.description === null ? null : character.description + '.'}
           </Text>
           {params.type === 'events' ? (
             <View>
@@ -85,8 +85,8 @@ function Details(props) {
           <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 15}}>
             Characters :
             <Text style={{fontSize: 16, lineHeight: 30}}>
-              {characters.map((character, index) => {
-                if (index === characters.length - 1) {
+              {characters.map((character, index) => {   
+                if (index === characters.length - 1 ) {
                   return character.name + '.';
                 }
                 return character.name + ', ';

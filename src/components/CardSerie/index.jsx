@@ -6,13 +6,7 @@ import {View} from 'react-native';
 import {styles} from './styles';
 
 function CardSeries({id, data}) {
-  const infoCharacter = {
-    name: 'Incredible Hercules  (2008 - 2010)',
-    image:
-      'https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2021/10/Quien-es-Ajak-el-personajes-de-Salma-Hayek-en-Eternals-compressed-1.jpg?resize=1280%2C1435&quality=80&ssl=1',
-    date: 'December 31, 1969',
-  };
-
+  
   const navigation = useNavigation();
 
   const goTo = () => {

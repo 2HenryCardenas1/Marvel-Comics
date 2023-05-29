@@ -10,7 +10,6 @@ const Card = props => {
   const navigation = useNavigation();
   const {character} = props;
 
-  
   goToDetails = () => {
     navigation.navigate('Details', {character});
   };
@@ -138,13 +137,12 @@ const Card = props => {
           aspectRatio: 1,
         }}>
         <Image
-          source={{
-            uri: `${character.image}`,
-          }}
+          source={{uri: character.image}}
           style={{
             height: '100%',
             borderRadius: 20,
           }}
+          onProgress={e => console.log(e.nativeEvent.loaded)}
         />
       </View>
     </Pressable>

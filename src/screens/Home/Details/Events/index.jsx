@@ -26,7 +26,7 @@ function EventsList(props) {
           id: event.id,
           title: event.title,
           description: event.description,
-          image: `${event.thumbnail.path}.${event.thumbnail.extension}`,
+          image: event.thumbnail.path + '.' + event.thumbnail.extension,
           characters: event.characters,
           url: event.urls[0].url,
           dateStart: event.start,
