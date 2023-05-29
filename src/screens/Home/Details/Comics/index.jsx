@@ -10,8 +10,10 @@ function ComicsList(props) {
   const {params} = props.route;
 
   const [comics, setComics] = useState([]);
+  const [offset, setOffset] = useState(0);
 
   const [loading, setLoading] = useState(true);
+  const [loadMore, setLoadMore] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -21,8 +23,11 @@ function ComicsList(props) {
 
   const loadComics = async () => {
     try {
-      const response = await getComicByCharacterId(params.id, params.total);
+      const response = await getComicByCharacterId(params.id, offset);
+      setLoadMore(true);
+      if (response.data.results.length === 0) setLoadMore(false);
 
+      setOffset(offset + 10);
       const comicsArray = [];
       for await (const comic of response.data.results) {
         comicsArray.push({
@@ -78,6 +83,22 @@ function ComicsList(props) {
           alignItems: 'center',
           width: width,
         }}
+        onEndReached={loadComics}
+        onEndReachedThreshold={0.1}
+        ListFooterComponent={
+          loadMore && (
+            <>
+              <ActivityIndicator
+                size="large"
+                style={{
+                  marginTop: 20,
+                  marginBottom: 60,
+                }}
+                color="#ED1D24"
+              />
+            </>
+          )
+        }
       />
     </View>
   );
