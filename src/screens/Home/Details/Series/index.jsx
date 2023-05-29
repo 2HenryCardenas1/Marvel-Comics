@@ -9,8 +9,9 @@ const {height} = Dimensions.get('screen');
 function SeriesList(props) {
   const {params} = props.route;
   const [series, setSeries] = useState([]);
+  const [offset, setOffset] = useState(0);
   const [loading, setLoading] = useState(true);
-
+  const [loadMore, setLoadMore] = useState(false);
   useEffect(() => {
     (async () => {
       loadSeries().then(() => setLoading(false));
@@ -19,8 +20,12 @@ function SeriesList(props) {
 
   const loadSeries = async () => {
     try {
-      const response = await getSeriesByCharacterId(params.id, params.total);
+      const response = await getSeriesByCharacterId(params.id, offset);
+      setLoadMore(true);
 
+      console.log('response', response);
+      if (response.data.results.length === 0) setLoadMore(false);
+      setOffset(offset + 10);
       const seriesArray = [];
       for await (const serie of response.data.results) {
         seriesArray.push({
@@ -71,6 +76,22 @@ function SeriesList(props) {
           alignItems: 'center',
           width: width,
         }}
+        onEndReached={loadSeries}
+        onEndReachedThreshold={0.1}
+        ListFooterComponent={
+          loadMore && (
+            <>
+              <ActivityIndicator
+                size="large"
+                style={{
+                  marginTop: 20,
+                  marginBottom: 60,
+                }}
+                color="#ED1D24"
+              />
+            </>
+          )
+        }
       />
     </View>
   );
