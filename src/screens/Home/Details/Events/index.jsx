@@ -10,7 +10,8 @@ function EventsList(props) {
 
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [offset, setOffset] = useState(0);
+  const [loadMore, setLoadMore] = useState(false);
   useEffect(() => {
     (async () => {
       loadEvents().then(() => setLoading(false));
@@ -18,8 +19,10 @@ function EventsList(props) {
   }, []);
   const loadEvents = async () => {
     try {
-      const response = await getEventsByCharacterId(params.id, params.total);
-
+      const response = await getEventsByCharacterId(params.id, offset);
+      setLoadMore(true);
+      if (response.data.results.length === 0) setLoadMore(false);
+      setOffset(offset + 10);
       const eventsArray = [];
       for await (const event of response.data.results) {
         eventsArray.push({
@@ -72,6 +75,22 @@ function EventsList(props) {
           alignItems: 'center',
           width: width,
         }}
+        onEndReached={loadEvents}
+        onEndReachedThreshold={0.1}
+        ListFooterComponent={
+          loadMore && (
+            <>
+              <ActivityIndicator
+                size="large"
+                style={{
+                  marginTop: 20,
+                  marginBottom: 60,
+                }}
+                color="#ED1D24"
+              />
+            </>
+          )
+        }
       />
     </View>
   );
