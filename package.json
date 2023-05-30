@@ -10,12 +10,18 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.18.1",
+    "@react-native-community/netinfo": "^9.3.10",
     "@react-native-masked-view/masked-view": "^0.2.9",
+    "@react-native-picker/picker": "^2.4.10",
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/stack": "^6.3.16",
     "@rneui/base": "^4.0.0-rc.7",
     "@rneui/themed": "^4.0.0-rc.7",
+    "amazon-cognito-identity-js": "^6.2.0",
+    "aws-amplify": "^5.2.4",
+    "aws-amplify-react-native": "^7.0.2",
     "formik": "^2.2.9",
     "luxon": "^3.3.0",
     "react": "18.2.0",

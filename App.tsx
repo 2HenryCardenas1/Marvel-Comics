@@ -6,10 +6,14 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
 
+import {Amplify} from 'aws-amplify';
 import 'react-native-gesture-handler';
+import config from './src/aws-exports';
 import Navigation from './src/navigation/Navigation';
+
+Amplify.configure(config);
 
 function App(): JSX.Element {
   return (
