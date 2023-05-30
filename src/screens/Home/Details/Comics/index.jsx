@@ -8,7 +8,7 @@ const {width} = Dimensions.get('window');
 const {height} = Dimensions.get('screen');
 function ComicsList(props) {
   const {params} = props.route;
-
+  
   const [comics, setComics] = useState([]);
   const [offset, setOffset] = useState(0);
 
@@ -58,7 +58,7 @@ function ComicsList(props) {
             size="large"
             color="#ED1D24"
             style={{
-              marginTop: height / 2 - 100 ,
+              marginTop: height / 2 - 100,
             }}
           />
           <Text
@@ -86,7 +86,8 @@ function ComicsList(props) {
         onEndReached={loadComics}
         onEndReachedThreshold={0.1}
         ListFooterComponent={
-          loadMore && (
+          loadMore &&
+          params.total >= 10 && (
             <>
               <ActivityIndicator
                 size="large"

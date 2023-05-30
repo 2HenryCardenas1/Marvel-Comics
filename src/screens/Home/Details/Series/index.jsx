@@ -77,7 +77,8 @@ function SeriesList(props) {
         onEndReached={loadSeries}
         onEndReachedThreshold={0.1}
         ListFooterComponent={
-          loadMore && (
+          loadMore &&
+          params.total >= 10 && (
             <>
               <ActivityIndicator
                 size="large"

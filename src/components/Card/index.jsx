@@ -142,7 +142,6 @@ const Card = props => {
             height: '100%',
             borderRadius: 20,
           }}
-          onProgress={e => console.log(e.nativeEvent.loaded)}
         />
       </View>
     </Pressable>
