@@ -1,6 +1,6 @@
 import {useFormik} from 'formik';
 import React from 'react';
-import {ScrollView, View} from 'react-native';
+import {Dimensions, ScrollView, View} from 'react-native';
 import LogoImage from '../../../components/Logo';
 
 import {useNavigation} from '@react-navigation/native';
@@ -8,12 +8,17 @@ import {Button, Divider, Input, Text} from '@rneui/themed';
 import {initialValues, validationSchema} from './components/RegisterFormData';
 import styles from './styles';
 
+const {width} = Dimensions.get('screen');
+
 const RegisterScreen = () => {
   const navigation = useNavigation();
 
   const formik = useFormik({
     initialValues: initialValues(),
-    onSubmit: values => console.log(values),
+    onSubmit: values => {
+      
+      console.log(values);
+    },
     validationSchema: validationSchema(),
   });
 
@@ -31,6 +36,7 @@ const RegisterScreen = () => {
 
               alignItems: 'center',
               marginHorizontal: 10,
+              justifyContent: 'space-between',
             }}>
             <Divider
               color="white"
@@ -51,7 +57,7 @@ const RegisterScreen = () => {
             <Divider
               color="white"
               width={1}
-              style={{width: '70%'}}
+              style={{width: width * 0.7 - 55}}
               insetType="left"
               orientation="horizontal"
             />
@@ -78,6 +84,7 @@ const RegisterScreen = () => {
 
               alignItems: 'center',
               marginHorizontal: 10,
+              justifyContent: 'space-between',
             }}>
             <Divider
               color="white"
@@ -98,7 +105,7 @@ const RegisterScreen = () => {
             <Divider
               color="white"
               width={1}
-              style={{width: '70%'}}
+              style={{width: width * 0.7 - 55}}
               insetType="left"
               orientation="horizontal"
             />
@@ -122,7 +129,7 @@ const RegisterScreen = () => {
           <View
             style={{
               flexDirection: 'row',
-
+              justifyContent: 'space-between',
               alignItems: 'center',
               marginHorizontal: 10,
             }}>
@@ -145,7 +152,7 @@ const RegisterScreen = () => {
             <Divider
               color="white"
               width={1}
-              style={{width: '80%'}}
+              style={{width: width * 0.8 - 55}}
               insetType="left"
               orientation="horizontal"
             />
@@ -172,6 +179,54 @@ const RegisterScreen = () => {
 
               alignItems: 'center',
               marginHorizontal: 10,
+              justifyContent: 'space-between',
+            }}>
+            <Divider
+              color="white"
+              width={1}
+              style={{width: '5%'}}
+              insetType="left"
+              orientation="horizontal"
+            />
+            <Text
+              style={{
+                fontSize: 16,
+                color: 'white',
+                marginHorizontal: 5,
+                fontWeight: 'bold',
+              }}>
+              Username
+            </Text>
+            <Divider
+              color="white"
+              width={1}
+              style={{width: width * 0.7 - 55}}
+              insetType="left"
+              orientation="horizontal"
+            />
+          </View>
+
+          <Input
+            placeholder="Username"
+            onChangeText={formik.handleChange('username')}
+            value={formik.values.username}
+            error={formik.errors.username}
+            errorMessage={formik.errors.username}
+            errorStyle={{color: 'white'}}
+            touched={formik.touched.username}
+            inputStyle={{color: 'black'}}
+            labelStyle={{color: 'white', fontWeight: 'bold', fontSize: 20}}
+            inputContainerStyle={styles.inputContainerStyle}
+          />
+        </View>
+
+        <View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginHorizontal: 10,
             }}>
             <Divider
               color="white"
@@ -192,7 +247,7 @@ const RegisterScreen = () => {
             <Divider
               color="white"
               width={1}
-              style={{width: '70%'}}
+              style={{width: width * 0.7 - 50}}
               insetType="left"
               orientation="horizontal"
             />
@@ -217,7 +272,7 @@ const RegisterScreen = () => {
           <View
             style={{
               flexDirection: 'row',
-
+              justifyContent: 'space-between',
               alignItems: 'center',
               marginHorizontal: 10,
             }}>
@@ -240,7 +295,7 @@ const RegisterScreen = () => {
             <Divider
               color="white"
               width={1}
-              style={{width: '52%'}}
+              style={{width: width * 0.5 - 26}}
               insetType="left"
               orientation="horizontal"
             />

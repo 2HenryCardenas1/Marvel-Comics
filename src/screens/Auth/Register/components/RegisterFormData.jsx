@@ -5,6 +5,7 @@ export function initialValues() {
     name: '',
     lastName: '',
     email: '',
+    username: '',
     password: '',
     confirmPassword: '',
   };
@@ -15,6 +16,7 @@ export function validationSchema() {
     name: Yup.string().min(3).max(30).required('Required'),
     lastName: Yup.string().min(3).max(30).required('Required'),
     email: Yup.string().email('Invalid email address').required('Required'),
+    username: Yup.string().min(3).max(30).required('Required'),
     password: Yup.string().min(3).required('Required'),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref('password'), null], 'Passwords must match')
