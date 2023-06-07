@@ -3,8 +3,11 @@ import React, {useEffect, useState} from 'react';
 import {getTenCharacters} from '../../api/characters';
 import CharactersList from './CharacterLists/CharactersList';
 
-import {View} from 'react-native';
+import {Dimensions, View} from 'react-native';
 import styles from './styles';
+const {width} = Dimensions.get('window');
+const {height} = Dimensions.get('screen');
+
 const HomeScreen = () => {
   const [search, setSearch] = useState('');
 
@@ -12,11 +15,13 @@ const HomeScreen = () => {
 
   const [offset, setOffset] = useState(0);
 
+  const [loading, setLoading] = useState(true);
+
   //useEffect to send info to the Card components
 
   useEffect(() => {
     (async () => {
-      await loadCharacters();
+      await loadCharacters().then(() => setLoading(false));
     })();
   }, []);
 
@@ -76,6 +81,7 @@ const HomeScreen = () => {
         characters={characters}
         offset={offset}
         loadCharacters={loadCharacters}
+        loading={loading}
       />
     </View>
   );

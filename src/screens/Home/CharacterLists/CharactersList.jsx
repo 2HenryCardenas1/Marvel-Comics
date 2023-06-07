@@ -1,10 +1,16 @@
 import React from 'react';
-import {ActivityIndicator, FlatList, StyleSheet} from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import Card from '../../../components/Card';
 import LogoImage from '../../../components/Logo';
 
 const CharactersList = props => {
-  const {characters, offset, loadCharacters} = props;
+  const {characters, offset, loadCharacters, loading} = props;
 
   const loadMore = () => {
     loadCharacters(offset);
@@ -15,7 +21,24 @@ const CharactersList = props => {
       data={characters}
       key={item => item.id}
       keyExtractor={item => item.id.toString()}
-      ListHeaderComponent={() => <LogoImage />}
+      ListHeaderComponent={() => (
+        <>
+          <LogoImage />
+          {loading && (
+            <View>
+              <ActivityIndicator size="large" color="#fefefe" />
+              <Text
+                style={{
+                  textAlign: 'center',
+                  fontSize: 16,
+                  color: '#fefefe',
+                }}>
+                Loading characters ...
+              </Text>
+            </View>
+          )}
+        </>
+      )}
       renderItem={({item}) => <Card character={item} />}
       onEndReached={loadMore}
       onEndReachedThreshold={0.1}
