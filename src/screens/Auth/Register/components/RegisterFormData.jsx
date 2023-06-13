@@ -11,6 +11,20 @@ export function initialValues() {
   };
 }
 
+export function initialCodeValues(username) {
+  return {
+    username: username,
+    code: '',
+  };
+}
+
+export function validationCodeSchema() {
+  return Yup.object({
+    username: Yup.string().min(3).max(30).required('Required'),
+    code: Yup.string().min(6).max(8).required('Required'),
+  });
+}
+
 export function validationSchema() {
   return Yup.object({
     name: Yup.string().min(3).max(30).required('Required'),

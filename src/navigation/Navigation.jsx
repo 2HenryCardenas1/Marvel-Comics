@@ -28,7 +28,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="NavigationHome"
+        initialRouteName="Auth"
         screenOptions={({route}) => ({
           tabBarActiveTintColor: '#E63838',
           tabBarHideOnKeyboard: true,

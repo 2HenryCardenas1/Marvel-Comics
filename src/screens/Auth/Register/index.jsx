@@ -1,10 +1,11 @@
 import {useFormik} from 'formik';
-import React from 'react';
-import {Dimensions, ScrollView, View} from 'react-native';
+import React, {useState} from 'react';
+import {Alert, Dimensions, ScrollView, View} from 'react-native';
 import LogoImage from '../../../components/Logo';
 
 import {useNavigation} from '@react-navigation/native';
 import {Button, Divider, Input, Text} from '@rneui/themed';
+import {Auth} from 'aws-amplify';
 import {initialValues, validationSchema} from './components/RegisterFormData';
 import styles from './styles';
 
@@ -12,12 +13,32 @@ const {width} = Dimensions.get('screen');
 
 const RegisterScreen = () => {
   const navigation = useNavigation();
+  const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: initialValues(),
-    onSubmit: values => {
-      
-      console.log(values);
+    onSubmit: async values => {
+      const {name, lastName, email, username, password} = values;
+      if (loading) {
+        return;
+      }
+      setLoading(true);
+      try {
+        const response = await Auth.signUp({
+          username,
+          password,
+          attributes: {
+            email,
+            name,
+            family_name: lastName,
+            preferred_username: username,
+          },
+        });
+        navigation.navigate('ConfirmCode', {username});
+      } catch (error) {
+        Alert.alert('Error', error.message);
+      }
+      setLoading(false);
     },
     validationSchema: validationSchema(),
   });
@@ -323,7 +344,7 @@ const RegisterScreen = () => {
             alignItems: 'center',
           }}>
           <Button
-            title={'Create account'}
+            title={loading ? 'Loading...' : 'Create account'}
             onPress={formik.handleSubmit}
             containerStyle={styles.containerBottom(formik.isValid)}
             buttonStyle={styles.button(formik.isValid)}
