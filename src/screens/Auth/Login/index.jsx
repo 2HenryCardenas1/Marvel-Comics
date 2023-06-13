@@ -1,33 +1,24 @@
 import {useNavigation} from '@react-navigation/native';
 import {Button, Text} from '@rneui/themed';
 import {useFormik} from 'formik';
-import React, {useState} from 'react';
-import {Alert, View} from 'react-native';
+import React from 'react';
+import {View} from 'react-native';
 import styles from './styles';
 
 import {Divider, Input} from '@rneui/themed';
-import {Auth} from 'aws-amplify';
 import {ScrollView} from 'react-native';
 import LogoImage from '../../../components/Logo';
+import useAuth from '../../../hooks/useAuth';
 import {initialValues, validationSchema} from './components/LoginFormData';
 const LoginScreen = () => {
   const navigation = useNavigation();
-  const [loading, setLoading] = useState(false);
+
+  const {login, loading} = useAuth();
 
   const formik = useFormik({
     initialValues: initialValues(),
     onSubmit: async values => {
-      if (loading) {
-        return;
-      }
-      setLoading(true);
-      try {
-        const response = await Auth.signIn(values.username, values.password);
-        console.log(response);
-      } catch (error) {
-        Alert.alert('Error', error.message);
-      }
-      setLoading(false);
+      login(values.username, values.password);
     },
     validationSchema: validationSchema(),
   });

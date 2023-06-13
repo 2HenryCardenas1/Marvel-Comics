@@ -1,15 +1,20 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
-import {Image, Keyboard} from 'react-native';
+import {ActivityIndicator, Image, Keyboard, View} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import useAuth from '../hooks/useAuth';
+import NoLogged from '../screens/NoLogged/NoLogged';
 import NavigationAuth from './NavigationAuth';
 import {NavigationFavorites} from './NavigationFavorites';
 import NavigationHome from './NavigationHome';
+import NavigationProfile from './NavigationProfile';
 const Tab = createBottomTabNavigator();
 const Navigation = () => {
   const [showTabNavigator, setShowTabNavigator] = useState(true);
+  const {auth} = useAuth();
+
   useEffect(() => {
     //Listener to open the keyboard
     const showSubcription = Keyboard.addListener('keyboardDidShow', e => {
@@ -25,6 +30,14 @@ const Navigation = () => {
     };
   }, []);
 
+  if (auth === undefined) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
+
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -35,7 +48,7 @@ const Navigation = () => {
         })}>
         <Tab.Screen
           name="Auth"
-          component={NavigationAuth}
+          component={auth ? NavigationProfile : NavigationAuth}
           options={{
             tabBarLabel: '',
             tabBarIcon: ({focused}) => {
@@ -79,7 +92,7 @@ const Navigation = () => {
         />
         <Tab.Screen
           name="NavigationFavorite"
-          component={NavigationFavorites}
+          component={auth ? NavigationFavorites : NoLogged}
           options={{
             tabBarLabel: '',
             tabBarIcon: ({focused}) => {
