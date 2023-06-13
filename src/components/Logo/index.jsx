@@ -6,7 +6,7 @@ const LogoImage = () => {
   return (
     <View style={styles.containerImage}>
       <Image
-        source={require('../../../android/app/src/main/assets/homeImages/Marvel_Logo.png')}
+        source={require('../../../android/app/src/main/assets/homeImages/marvelogo.png')}
         style={styles.image}
       />
     </View>
