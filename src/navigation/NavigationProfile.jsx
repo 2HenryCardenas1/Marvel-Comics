@@ -5,7 +5,13 @@ const Stack = createStackNavigator();
 const NavigationProfile = () => {
   return (
     <Stack.Navigator initialRouteName="profileScreen">
-      <Stack.Screen name="profileScreen" component={profile} />
+      <Stack.Screen
+        name="profileScreen"
+        component={profile}
+        options={{
+          title: 'Profile',
+        }}
+      />
     </Stack.Navigator>
   );
 };
