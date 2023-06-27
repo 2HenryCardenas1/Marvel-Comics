@@ -35,7 +35,7 @@ export function AuthProvider({children}) {
         checkUser();
       }
     };
-    console.log("Hub.listen('auth', listener);");
+
     Hub.listen('auth', listener);
 
     return () => Hub.remove('auth', listener);
@@ -48,8 +48,9 @@ export function AuthProvider({children}) {
     setLoading(true);
     try {
       const response = await Auth.signIn(username, password);
+      
       setAuth(response);
-      setAttributes(response.attributes);
+      setAttributes(response.challengeParam.userAttributes);
     } catch (error) {
       Alert.alert('Error', error.message);
     }
@@ -71,8 +72,6 @@ export function AuthProvider({children}) {
     }
     setLoading(false);
   };
-
-  
 
   const valueContext = {
     auth,
