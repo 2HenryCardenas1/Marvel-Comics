@@ -92,7 +92,7 @@ const Navigation = () => {
         />
         <Tab.Screen
           name="NavigationFavorite"
-          component={NavigationFavorites}
+          component={auth ? NavigationFavorites : NoLogged}
           options={{
             tabBarLabel: '',
             tabBarIcon: ({focused}) => {
