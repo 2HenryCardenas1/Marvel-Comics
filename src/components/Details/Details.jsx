@@ -4,12 +4,16 @@ import {DateTime} from 'luxon';
 import React, {useEffect} from 'react';
 import {Linking, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import useAuth from '../../hooks/useAuth';
+import {FavoriteIcon} from '../FavoriteIcon/FavoriteIcon';
 import styles from './styles';
 function Details(props) {
   const {
     navigation,
     route: {params},
   } = props;
+
+  const {auth} = useAuth();
 
   const character = params.data;
   const characters = character.characters.items;
@@ -38,6 +42,10 @@ function Details(props) {
           onPress={navigation.goBack}
         />
       ),
+
+      headerRight: () => (
+        <FavoriteIcon data={character} type={params.type} />
+      ),
     });
   }, [navigation, params]);
 
@@ -57,7 +65,9 @@ function Details(props) {
 
         <View>
           <Text style={{fontSize: 16, lineHeight: 30, textAlign: 'left'}}>
-            {character.description === null ? null : character.description + '.'}
+            {character.description === null
+              ? null
+              : character.description + '.'}
           </Text>
           {params.type === 'events' ? (
             <View>
@@ -85,8 +95,8 @@ function Details(props) {
           <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 15}}>
             Characters :
             <Text style={{fontSize: 16, lineHeight: 30}}>
-              {characters.map((character, index) => {   
-                if (index === characters.length - 1 ) {
+              {characters.map((character, index) => {
+                if (index === characters.length - 1) {
                   return character.name + '.';
                 }
                 return character.name + ', ';

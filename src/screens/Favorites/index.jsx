@@ -1,11 +1,14 @@
 import {useNavigation} from '@react-navigation/native';
 import {Image} from '@rneui/base';
 import {Button, Icon} from '@rneui/themed';
-import React from 'react';
+import React, {useState} from 'react';
 import {Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {styles} from './style';
 function FavoriteScreen() {
+  const [comics, setComics] = useState([]);
+  const auth = true;
+
   return (
     <ScrollView>
       <CardFav name={'comics'} />
@@ -74,7 +77,8 @@ function CardFav({name}) {
           containerStyle={styles.bottomContainer}
           buttonStyle={{
             backgroundColor: 'white',
-          }}>
+          }}
+          onPress={() => goTo()}>
           <Text
             style={{
               color: 'black',
@@ -89,7 +93,6 @@ function CardFav({name}) {
             color="black"
             type="material-community"
             size={25}
-            onPress={() => goTo()}
           />
         </Button>
       </View>

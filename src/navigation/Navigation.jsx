@@ -41,7 +41,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Auth"
+        initialRouteName="NavigationHome"
         screenOptions={({route}) => ({
           tabBarActiveTintColor: '#E63838',
           tabBarHideOnKeyboard: true,
@@ -92,7 +92,7 @@ const Navigation = () => {
         />
         <Tab.Screen
           name="NavigationFavorite"
-          component={auth ? NavigationFavorites : NoLogged}
+          component={NavigationFavorites}
           options={{
             tabBarLabel: '',
             tabBarIcon: ({focused}) => {
