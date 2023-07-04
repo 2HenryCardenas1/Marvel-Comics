@@ -40,7 +40,6 @@ const Profile = () => {
         )}
         {cardData(attributes.email, (title = 'Email'))}
         {cardData(attributes.preferred_username, (title = 'Username'))}
-        {cardData(0, (title = 'Total Favorites'))}
       </View>
       <Button title={'Logout'} onPress={() => logout()} color={'#ED1D24'} />
     </SafeAreaView>
@@ -83,6 +82,7 @@ const cardData = (data, title, index) => {
           <Text
             style={{
               fontSize: 16,
+              color: 'black',
             }}>
             {data}
           </Text>
