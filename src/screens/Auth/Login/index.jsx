@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
-import {Button, Text} from '@rneui/themed';
+import {Button, Icon, Text} from '@rneui/themed';
 import {useFormik} from 'formik';
-import React from 'react';
+import React, {useState} from 'react';
 import {View} from 'react-native';
 import styles from './styles';
 
@@ -15,6 +15,8 @@ const LoginScreen = () => {
 
   const {login, loading} = useAuth();
 
+  const [showPassword, setShowPassword] = useState(false);
+
   const formik = useFormik({
     initialValues: initialValues(),
     onSubmit: async values => {
@@ -22,6 +24,10 @@ const LoginScreen = () => {
     },
     validationSchema: validationSchema(),
   });
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -117,7 +123,14 @@ const LoginScreen = () => {
             inputStyle={{color: 'black'}}
             labelStyle={{color: 'white', fontWeight: 'bold', fontSize: 20}}
             inputContainerStyle={styles.inputContainerStyle}
-            secureTextEntry={true}
+            secureTextEntry={showPassword ? false : true}
+            rightIcon={
+              <Icon
+                name={showPassword ? 'eye-off' : 'eye'}
+                type="material-community"
+                onPress={handleShowPassword}
+              />
+            }
           />
         </View>
 
