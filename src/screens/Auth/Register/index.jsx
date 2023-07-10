@@ -4,7 +4,7 @@ import {Alert, Dimensions, ScrollView, View} from 'react-native';
 import LogoImage from '../../../components/Logo';
 
 import {useNavigation} from '@react-navigation/native';
-import {Button, Divider, Input, Text} from '@rneui/themed';
+import {Button, Divider, Icon, Input, Text} from '@rneui/themed';
 import {Auth} from 'aws-amplify';
 import {initialValues, validationSchema} from './components/RegisterFormData';
 import styles from './styles';
@@ -14,6 +14,12 @@ const {width} = Dimensions.get('screen');
 const RegisterScreen = () => {
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const formik = useFormik({
     initialValues: initialValues(),
@@ -285,7 +291,14 @@ const RegisterScreen = () => {
             inputStyle={{color: 'black'}}
             labelStyle={{color: 'white', fontWeight: 'bold', fontSize: 20}}
             inputContainerStyle={styles.inputContainerStyle}
-            secureTextEntry={true}
+            secureTextEntry={showPassword ? false : true}
+            rightIcon={
+              <Icon
+                name={showPassword ? 'eye-off' : 'eye'}
+                type="material-community"
+                onPress={handleShowPassword}
+              />
+            }
           />
         </View>
 
@@ -333,7 +346,14 @@ const RegisterScreen = () => {
             inputStyle={{color: 'black'}}
             labelStyle={{color: 'white', fontWeight: 'bold', fontSize: 20}}
             inputContainerStyle={styles.inputContainerStyle}
-            secureTextEntry={true}
+            secureTextEntry={showPassword ? false : true}
+            rightIcon={
+              <Icon
+                name={showPassword ? 'eye-off' : 'eye'}
+                type="material-community"
+                onPress={handleShowPassword}
+              />
+            }
           />
         </View>
 
