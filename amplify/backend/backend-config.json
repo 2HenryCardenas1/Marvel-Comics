@@ -1,6 +1,6 @@
 {
   "auth": {
-    "marvelapp": {
+    "marvelmovileapp": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -18,10 +18,10 @@
           "passwordPolicyMinLength": 8
         },
         "signupAttributes": [
-          "PREFERRED_USERNAME",
           "EMAIL",
+          "NAME",
           "FAMILY_NAME",
-          "NAME"
+          "PREFERRED_USERNAME"
         ],
         "socialProviders": [],
         "usernameAttributes": [],

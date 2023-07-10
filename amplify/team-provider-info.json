@@ -1,19 +1,19 @@
 {
   "staging": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-marvelapp-staging-172742-authRole",
-      "UnauthRoleArn": "arn:aws:iam::365597124676:role/amplify-marvelapp-staging-172742-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::365597124676:role/amplify-marvelapp-staging-172742-authRole",
+      "AuthRoleName": "amplify-marvelmovileapp-staging-190554-authRole",
+      "UnauthRoleArn": "arn:aws:iam::365597124676:role/amplify-marvelmovileapp-staging-190554-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::365597124676:role/amplify-marvelmovileapp-staging-190554-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-marvelapp-staging-172742-deployment",
-      "UnauthRoleName": "amplify-marvelapp-staging-172742-unauthRole",
-      "StackName": "amplify-marvelapp-staging-172742",
-      "StackId": "arn:aws:cloudformation:us-east-1:365597124676:stack/amplify-marvelapp-staging-172742/49017ce0-ff0f-11ed-b70d-12a2421ea85d",
-      "AmplifyAppId": "d3q2r93ifouove"
+      "DeploymentBucketName": "amplify-marvelmovileapp-staging-190554-deployment",
+      "UnauthRoleName": "amplify-marvelmovileapp-staging-190554-unauthRole",
+      "StackName": "amplify-marvelmovileapp-staging-190554",
+      "StackId": "arn:aws:cloudformation:us-east-1:365597124676:stack/amplify-marvelmovileapp-staging-190554/cb9ea5f0-1f54-11ee-98eb-12682e706cdf",
+      "AmplifyAppId": "d3osouf8oai8zg"
     },
     "categories": {
       "auth": {
-        "marvelapp": {}
+        "marvelmovileapp": {}
       }
     }
   }

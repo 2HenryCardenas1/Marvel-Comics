@@ -1,6 +1,7 @@
+import {Text} from '@rneui/base';
 import {Button, Divider} from '@rneui/themed';
 import React from 'react';
-import {ActivityIndicator, Text, View} from 'react-native';
+import {ActivityIndicator, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import useAuth from '../../hooks/useAuth';
 
@@ -33,20 +34,26 @@ const Profile = () => {
           shadowRadius: 5,
           padding: 10,
         }}>
-        {cardData(
-          attributes.name + ' ' + attributes.family_name,
-          (title = 'Name'),
-          (index = 0),
-        )}
-        {cardData(attributes.email, (title = 'Email'))}
-        {cardData(attributes.preferred_username, (title = 'Username'))}
+        {cardData({
+          data: attributes.name + ' ' + attributes.family_name,
+          title: 'Name',
+          index: 0,
+        })}
+        {cardData({
+          data: attributes.email,
+          title: 'Email',
+        })}
+        {cardData({
+          data: attributes.preferred_username,
+          title: 'Username',
+        })}
       </View>
       <Button title={'Logout'} onPress={() => logout()} color={'#ED1D24'} />
     </SafeAreaView>
   );
 };
 
-const cardData = (data, title, index) => {
+const cardData = ({data, title, index}) => {
   return (
     <>
       {index === 0 ? null : (

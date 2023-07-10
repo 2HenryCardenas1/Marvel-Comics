@@ -17,7 +17,7 @@ export function AuthProvider({children}) {
     try {
       const authUser = await Auth.currentAuthenticatedUser({bypassCache: true});
       setAuth(authUser);
-      setAttributes(authUser.userAttributes);
+      setAttributes(authUser.attributes);
     } catch (error) {
       setAuth(null);
     }
@@ -35,8 +35,8 @@ export function AuthProvider({children}) {
         checkUser();
       }
     };
-
-    Hub.listen('auth', listener).call();
+    Hub.listen('auth', listener);
+    return () => Hub.remove('auth', listener);
   }, []);
 
   const login = async (username, password) => {
@@ -46,9 +46,9 @@ export function AuthProvider({children}) {
     setLoading(true);
     try {
       const response = await Auth.signIn(username, password);
-      console.log('Response', response);
+      console.log(response);
       setAuth(response);
-      setAttributes(response.challengeParam.userAttributes);
+      setAttributes(response.attributes);
     } catch (error) {
       Alert.alert('Error', error.message);
     }

@@ -3,8 +3,8 @@
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "marvel4d6e9741",
-    "userPoolName": "marvelapp",
+    "resourceNameTruncated": "marvelca42b86b",
+    "userPoolName": "marvelmovileapp",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -25,20 +25,20 @@
       "Requires Uppercase"
     ],
     "requiredAttributes": [
-      "preferred_username",
       "email",
+      "name",
       "family_name",
-      "name"
+      "preferred_username"
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "marvel4d6e9741_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "marvelca42b86b_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "4d6e9741",
-    "resourceName": "marvelapp",
+    "sharedId": "ca42b86b",
+    "resourceName": "marvelmovileapp",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",
     "useDefault": "manual",
@@ -48,21 +48,6 @@
     "thirdPartyAuth": false,
     "authProviders": [],
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true,
-    "authRoleArn": {
-      "Fn::GetAtt": [
-        "AuthRole",
-        "Arn"
-      ]
-    },
-    "unauthRoleArn": {
-      "Fn::GetAtt": [
-        "UnauthRole",
-        "Arn"
-      ]
-    },
-    "breakCircularDependency": true,
-    "dependsOn": [],
-    "hostedUI": false
+    "useEnabledMfas": true
   }
 }

@@ -2,7 +2,7 @@
   "providers": [
     "awscloudformation"
   ],
-  "projectName": "marvelapp",
+  "projectName": "marvelmovileapp",
   "version": "3.1",
   "frontend": "javascript",
   "javascript": {
