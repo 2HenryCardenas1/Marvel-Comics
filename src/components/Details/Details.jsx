@@ -1,11 +1,11 @@
-import { BackgroundImage, Text } from '@rneui/base';
-import { Button, Icon } from '@rneui/themed';
-import { DateTime } from 'luxon';
-import React, { useEffect } from 'react';
-import { Linking, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import {BackgroundImage, Text} from '@rneui/base';
+import {Button, Icon} from '@rneui/themed';
+import {DateTime} from 'luxon';
+import React, {useEffect} from 'react';
+import {Linking, View} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 import useAuth from '../../hooks/useAuth';
-import { FavoriteIcon } from '../FavoriteIcon/FavoriteIcon';
+import {FavoriteIcon} from '../FavoriteIcon/FavoriteIcon';
 import styles from './styles';
 function Details(props) {
   const {
@@ -43,7 +43,8 @@ function Details(props) {
         />
       ),
 
-      headerRight: () => auth ? <FavoriteIcon data={character} type={params.type} /> : null,
+      headerRight: () =>
+        auth ? <FavoriteIcon data={character} type={params.type} /> : null,
     });
   }, [navigation, params]);
 
@@ -123,5 +124,4 @@ function Details(props) {
   );
 }
 
-export { Details };
-
+export {Details};
