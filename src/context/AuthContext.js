@@ -46,7 +46,6 @@ export function AuthProvider({children}) {
     setLoading(true);
     try {
       const response = await Auth.signIn(username, password);
-      console.log(response);
       setAuth(response);
       setAttributes(response.attributes);
     } catch (error) {
