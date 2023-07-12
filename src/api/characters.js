@@ -9,3 +9,11 @@ export async function getTenCharacters(offset) {
   const data = await response.json();
   return data;
 }
+
+export async function getCharacterByName(name) {
+  let url = `${API_CHARACTER_URL}?name=${name}&ts=10&apikey=${PUBLIC_API_KEY}&hash=${KEY_MD5}`;
+
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
