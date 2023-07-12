@@ -1,4 +1,3 @@
-import {Icon} from '@rneui/themed';
 import React, {useRef} from 'react';
 import {
   ActivityIndicator,
@@ -7,8 +6,8 @@ import {
   Text,
   View,
 } from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import Card from '../../../components/Card';
+import {goToTop} from '../../../components/GoToTop/goToTop';
 import LogoImage from '../../../components/Logo';
 
 const CharactersList = props => {
@@ -18,26 +17,6 @@ const CharactersList = props => {
 
   const loadMore = () => {
     loadCharacters(offset);
-  };
-
-  const goToTop = () => {
-    if (characters.length > 10) {
-      return (
-        <View style={{position: 'absolute', bottom: 20, right: 20}}>
-          <TouchableOpacity
-            onPress={() =>
-              flatListRef.current.scrollToOffset({animated: true, offset: 0})
-            }>
-            <Icon
-              type="material-community"
-              name="arrow-up-circle"
-              size={30}
-              color="#ED1D24"
-            />
-          </TouchableOpacity>
-        </View>
-      );
-    }
   };
 
   return (
@@ -78,7 +57,7 @@ const CharactersList = props => {
           )
         }
       />
-      {goToTop()}
+      {characters.length > 10 && goToTop(flatListRef)}
     </>
   );
 };

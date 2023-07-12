@@ -1,19 +1,22 @@
 import {Text} from '@rneui/base';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {ActivityIndicator, Dimensions, View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import {getComicByCharacterId} from '../../../../api/comics';
 import {CardList} from '../../../../components';
+import {goToTop} from '../../../../components/GoToTop/goToTop';
 const {width} = Dimensions.get('window');
 const {height} = Dimensions.get('screen');
 function ComicsList(props) {
   const {params} = props.route;
-  
+
   const [comics, setComics] = useState([]);
   const [offset, setOffset] = useState(0);
 
   const [loading, setLoading] = useState(true);
   const [loadMore, setLoadMore] = useState(false);
+
+  const flatListRef = useRef(null);
 
   useEffect(() => {
     (async () => {
@@ -72,6 +75,7 @@ function ComicsList(props) {
       )}
 
       <FlatList
+        ref={flatListRef}
         data={comics}
         keyExtractor={item => item.id.toString()}
         renderItem={({item}) => (
@@ -101,6 +105,8 @@ function ComicsList(props) {
           )
         }
       />
+
+      {comics.length > 10 && goToTop(flatListRef)}
     </View>
   );
 }

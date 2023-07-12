@@ -1,8 +1,9 @@
 import {Text} from '@rneui/base';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {ActivityIndicator, Dimensions, FlatList, View} from 'react-native';
 import {getEventsByCharacterId} from '../../../../api/events';
 import {CardList} from '../../../../components';
+import {goToTop} from '../../../../components/GoToTop/goToTop';
 const {width} = Dimensions.get('window');
 const {height} = Dimensions.get('screen');
 function EventsList(props) {
@@ -12,6 +13,8 @@ function EventsList(props) {
   const [loading, setLoading] = useState(true);
   const [offset, setOffset] = useState(0);
   const [loadMore, setLoadMore] = useState(false);
+
+  const flatListRef = useRef(null);
   useEffect(() => {
     (async () => {
       loadEvents().then(() => setLoading(false));
@@ -64,6 +67,7 @@ function EventsList(props) {
         </View>
       )}
       <FlatList
+        ref={flatListRef}
         data={events}
         keyExtractor={item => item.id.toString()}
         renderItem={({item}) => (
@@ -93,6 +97,7 @@ function EventsList(props) {
           )
         }
       />
+      {events.length > 10 && goToTop(flatListRef)}
     </View>
   );
 }

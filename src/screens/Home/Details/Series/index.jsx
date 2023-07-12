@@ -1,8 +1,9 @@
 import {Text} from '@rneui/base';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {ActivityIndicator, Dimensions, FlatList, View} from 'react-native';
 import {getSeriesByCharacterId} from '../../../../api/series';
 import {CardSeries} from '../../../../components';
+import {goToTop} from '../../../../components/GoToTop/goToTop';
 
 const {width} = Dimensions.get('window');
 const {height} = Dimensions.get('screen');
@@ -12,6 +13,8 @@ function SeriesList(props) {
   const [offset, setOffset] = useState(0);
   const [loading, setLoading] = useState(true);
   const [loadMore, setLoadMore] = useState(false);
+
+  const flatListRef = useRef(null);
   useEffect(() => {
     (async () => {
       loadSeries().then(() => setLoading(false));
@@ -66,6 +69,7 @@ function SeriesList(props) {
         </View>
       )}
       <FlatList
+        ref={flatListRef}
         data={series}
         keyExtractor={item => item.id.toString()}
         renderItem={({item}) => <CardSeries id={params.id} data={item} />}
@@ -92,6 +96,7 @@ function SeriesList(props) {
           )
         }
       />
+      {series.length > 10 && goToTop(flatListRef)}
     </View>
   );
 }
