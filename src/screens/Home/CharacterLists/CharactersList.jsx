@@ -10,7 +10,7 @@ import Card from '../../../components/Card';
 import LogoImage from '../../../components/Logo';
 
 const CharactersList = props => {
-  const {characters, offset, loadCharacters, loading} = props;
+  const {characters, offset, loadCharacters, loading, screen} = props;
 
   const loadMore = () => {
     loadCharacters(offset);
@@ -23,7 +23,7 @@ const CharactersList = props => {
       keyExtractor={item => item.id.toString()}
       ListHeaderComponent={() => (
         <>
-          <LogoImage />
+          {screen === 'Results' ? null : <LogoImage />}
           {loading && (
             <View>
               <ActivityIndicator size="large" color="#fefefe" />
@@ -40,7 +40,7 @@ const CharactersList = props => {
         </>
       )}
       renderItem={({item}) => <Card character={item} />}
-      onEndReached={loadMore}
+      onEndReached={screen === 'Results' ? null : loadMore}
       onEndReachedThreshold={0.1}
       ListFooterComponent={
         offset && (
