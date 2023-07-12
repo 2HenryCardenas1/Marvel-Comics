@@ -2,6 +2,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import HomeScreen from '../screens/Home';
 import Details from '../screens/Home/Details/Details';
+import ResultSearch from '../screens/ResultsSearch';
 import {NavigationComics} from './NavigationComics';
 import {NavigationEvents} from './NavigationEvents';
 import {NavigationSeries} from './NavigationSeries';
@@ -41,6 +42,8 @@ const NavigationHome = () => {
           options={{headerShown: false}}
         />
       </Stack.Group>
+
+      <Stack.Screen name="Results" component={ResultSearch} />
     </Stack.Navigator>
   );
 };
