@@ -3,12 +3,14 @@ import React, {useEffect, useState} from 'react';
 import {getTenCharacters} from '../../api/characters';
 import CharactersList from './CharacterLists/CharactersList';
 
+import {useNavigation} from '@react-navigation/native';
 import {Dimensions, View} from 'react-native';
 import styles from './styles';
 const {width} = Dimensions.get('window');
 const {height} = Dimensions.get('screen');
 
 const HomeScreen = () => {
+  const navigate = useNavigation();
   const [search, setSearch] = useState('');
 
   const [characters, setCharacters] = useState([]);
@@ -50,6 +52,10 @@ const HomeScreen = () => {
     }
   };
 
+  const goToResults = search => {
+    navigate.navigate('Results', {name: search});
+  };
+
   if (characters === null) return null;
 
   return (
@@ -70,11 +76,12 @@ const HomeScreen = () => {
         }}
         labelStyle={{color: 'red', backgroundColor: 'white'}}
         inputStyle={{
-          color: 'red',
+          color: 'black',
           backgroundColor: 'white',
           borderRadius: 20,
         }}
         cancelButtonProps={{color: 'white'}}
+        onSubmitEditing={() => goToResults(search)}
       />
 
       <CharactersList
