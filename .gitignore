@@ -1,176 +1,90 @@
-# Expo
-.expo
-__generated__
-web-build
-bare-apps
-
-# macOS
+# OSX
+#
 .DS_Store
 
-# Node
-node_modules
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+ios/.xcode.env.local
+
+# Android/IntelliJ
+#
+build/
+.idea
+.gradle
+local.properties
+*.iml
+*.hprof
+.cxx/
+*.keystore
+!debug.keystore
+
+# node.js
+#
+node_modules/
 npm-debug.log
 yarn-error.log
 
-# Ruby
-.direnv
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/
 
-# Env
-.envrc.local
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots
+**/fastlane/test_output
 
-# Emacs
-*~
+# Bundle artifact
+*.jsbundle
 
-# Vim
-.*.swp
-.*.swo
-.*.swn
-.*.swm
+# Ruby / CocoaPods
+/ios/Pods/
+/vendor/bundle/
 
-# Sublime Text
-*.sublime-project
-*.sublime-workspace
+# Temporary files created by Metro to check the health of the file watcher
+.metro-health-check*
 
-# Xcode
-*.pbxuser
-!default.pbxuser
-*.xccheckout
-*.xcscmblueprint
-xcuserdata
+# 
+src/key/
 
-# IDEA / Android Studio
-*.iml
-.gradle
-.idea
+android/app/release
 
-# Eclipse
-.project
-.settings
-
-# VSCode
-.history/
-
-# Android
-*.apk
-*.hprof
-/android/**/build
-/android/**/.cxx
-/android/**/local.properties
-/android/captures
-/android/expoview/libs/ReactAndroid-temp
-/android/versioned-react-native/ReactAndroid
-/android/versioned-react-native/ReactCommon
-/android/versioned-react-native/codegen
-ReactAndroid-temp.aar
-/android/ReactAndroid/prebuiltHermes
-
-# Tools
-jarjar-rules.txt
-
-# Dynamic Macros
-/ios/Exponent/Supporting/EXBuildConstants.plist.bak
-/ios/Exponent/Supporting/EXBuildConstants.plist.json
-/ios/Exponent/Supporting/EXBuildConstants.plist
-/ios/Exponent/Supporting/GoogleService-Info.plist
-/ios/Exponent/Supporting/Info.plist.bak
-/ios/Exponent/Supporting/Info.plist.json
-/android/expoview/src/main/java/host/exp/exponent/generated/ExponentBuildConstants.java
-/android/app/src/androidTest/java/host/exp/exponent/generated/TestBuildConstants.java
-.kernel-ngrok-url
-
-# Template files
-/android/app/src/main/AndroidManifest.xml
-/android/app/google-services.json
-/android/expoview/src/main/java/host/exp/exponent/generated/ExponentKeys.java
-/apps/bare-expo/android/app/google-services.json
-/apps/bare-expo/ios/BareExpo/GoogleService-Info.plist
-/ios/Exponent/Generated/EXKeys.h
-/ios/ExponentIntegrationTests/EXTestEnvironment.plist
-/exponent-view-template/ios/Podfile
-
-# Template projects
-templates/**/android/**/generated/*
-templates/**/android/app/build
-templates/**/Pods/**
-templates/**/Podfile.lock
-templates/**/yarn.lock
-
-# Codemod
-.codemod.bookmark
-
-# Fastlane
-/*.cer
-/fastlane/report.xml
-/fastlane/Preview.html
-/fastlane/Deployment
-/fastlane/test_output
-/Preview.html
-/gc_keys.json
-/fastlane/gc_keys.json
-
-# CI
-/android/logcat.txt
-
-# Shell apps
-android-shell-app
-shellAppBase-*
-shellAppIntermediates
-shellAppWorkspaces
-/artifacts/*
-
-# Expo Client builds
-/client-builds
-
-# Expo web env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-apps/bare-expo/deploy-url.txt
-
-# Expo Doc merging
-docs/pages/versions/*/react-native/ADDED_*.md
-docs/pages/versions/*/react-native/REMOVED_*.md
-docs/pages/versions/*/react-native/*.diff
-
-# Home
-/home/dist
-
-# Prebuilds
-/packages/**/*.xcframework
-/packages/**/*.spec.json
-/packages/**/Info-generated.plist
-
-# iOS
-/ios/Pods
-/ios/build
-
-node_modules/
-.expo/
+#amplify-do-not-edit-begin
+amplify/\#current-cloud-backend
+amplify/.config/local-*
+amplify/logs
+amplify/mock-data
+amplify/mock-api-resources
+amplify/backend/amplify-meta.json
+amplify/backend/.temp
+build/
 dist/
-npm-debug.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-*.orig.*
-web-build/
-
-# macOS
-.DS_Store
-
-Marvel/node_modules/
-Marvel/.expo/
-Marvel/dist/
-npm-debug.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-*.orig.*
-Marvel/web-build/
-
-# macOS
-.DS_Store
+node_modules/
+aws-exports.js
+awsconfiguration.json
+amplifyconfiguration.json
+amplifyconfiguration.dart
+amplify-build-config.json
+amplify-gradle-config.json
+amplifytools.xcconfig
+.secret-*
+**.sample
+#amplify-do-not-edit-end
