@@ -8,7 +8,7 @@ export default function ComicsNavigation() {
 
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Comics" component={ComicsScreen} options={{title:'', headerTransparent: true}} />
+      <Stack.Screen name="ComicsScreen" component={ComicsScreen} options={{title:'', headerTransparent: true}} />
     </Stack.Navigator>
   )
 }

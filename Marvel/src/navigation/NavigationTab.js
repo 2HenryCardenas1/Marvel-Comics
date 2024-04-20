@@ -40,6 +40,7 @@ export default function NavigationTab() {
 
 
             })}>
+                
             <Tab.Screen name="Comics" component={ComicsNavigation} />
             <Tab.Screen
                 name="Characters"

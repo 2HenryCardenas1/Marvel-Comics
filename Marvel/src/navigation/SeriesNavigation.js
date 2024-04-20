@@ -7,7 +7,7 @@ const Stack = createStackNavigator()
 export default function SeriesNavigation() {
   return (
     <Stack.Navigator>
-        <Stack.Screen name="Series" component={SeriesScreen} options={{title:'',headerTransparent:true}}/>
+        <Stack.Screen name="SeriesNav" component={SeriesScreen} options={{title:'',headerTransparent:true}}/>
     </Stack.Navigator>
   )
 }
